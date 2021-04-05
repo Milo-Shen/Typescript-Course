@@ -1,0 +1,25 @@
+{
+  "name": "typescript-course",
+  "version": "1.0.0",
+  "description": "Typescript-Course",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.7",
+    "@tsconfig/recommended": "^1.0.1",
+    "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milo-Shen/Typescript-Course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Milo-Shen/Typescript-Course/issues"
+  },
+  "homepage": "https://github.com/Milo-Shen/Typescript-Course#readme"
+}
