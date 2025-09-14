@@ -18,10 +18,11 @@ class Point {
 console.log(Point.prototype.constructor === Point);
 
 const point = new Point(2, 3);
-console.log(point.toString()); // (2, 3)
+console.log('point.toString(): ', point.toString()); // (2, 3)
 console.log(point.hasOwnProperty('x')); // true
 console.log(point.hasOwnProperty('y')); // true
 console.log(point.hasOwnProperty('toString')); // false
+console.log(Point.prototype.hasOwnProperty('toString')); // true
 console.log(point.__proto__.hasOwnProperty('toString')); // true
 
 // getPrototypeOf: get to prototype of the instance
