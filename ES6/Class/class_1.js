@@ -35,3 +35,8 @@ const point1 = new Point(1, 2);
 const point2 = new Point(1, 2);
 console.log('point1.ownFunc === point2.ownFunc: ', point1.ownFunc === point2.ownFunc);
 console.log('point1.toString === point2.toString', point1.toString === point2.toString);
+
+// add printName function to Point's prototype
+// Modifying the prototype using an instance's proto property must be done with extreme caution and is not recommended, as it will alter the original definition of the "class" and affect all instances.
+point1.__proto__.printName = () => 'Oops';
+console.log(point2.printName());
