@@ -40,3 +40,29 @@ console.log('point1.toString === point2.toString', point1.toString === point2.to
 // Modifying the prototype using an instance's proto property must be done with extreme caution and is not recommended, as it will alter the original definition of the "class" and affect all instances.
 point1.__proto__.printName = () => 'Oops';
 console.log(point2.printName());
+
+// Instance properties of a class Example
+class IncreasingCounter1 {
+  constructor() {
+    this._count = 0;
+  }
+  get value() {
+    console.log('Getting the current value!');
+    return this._count;
+  }
+  increment() {
+    this._count++;
+  }
+}
+
+class IncreasingCounter2 {
+  // the usage of _count here is as same as the _count in IncreasingCounter1
+  _count = 0;
+  get value() {
+    console.log('Getting the current value!');
+    return this._count;
+  }
+  increment() {
+    this._count++;
+  }
+}
