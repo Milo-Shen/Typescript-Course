@@ -78,3 +78,22 @@ class foo {
     // ...
   }
 }
+
+// The setter function and getter function are set on the Descriptor object of the property.
+class CustomHTMLElement {
+  constructor(element) {
+    this.element = element;
+  }
+
+  get html() {
+    return this.element.innerHTML;
+  }
+
+  set html(value) {
+    this.element.innerHTML = value;
+  }
+}
+const descriptor = Object.getOwnPropertyDescriptor(CustomHTMLElement.prototype, 'html');
+console.log('descriptor', descriptor);
+console.log(`'get' in descriptor`, 'get' in descriptor); // true
+console.log(`'set' in descriptor`, 'set' in descriptor); // true
