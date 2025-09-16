@@ -58,6 +58,7 @@ class IncreasingCounter1 {
 class IncreasingCounter2 {
   // the usage of _count here is as same as the _count in IncreasingCounter1
   // Note that the properties defined with the new syntax are properties of the instance object itself, not defined on the prototype of the instance object.
+  // The good thing about this new way of writing is that all instance attributes are defined at the top of the class—it looks neat, and you can see right away what attributes the class has.
   _count = 0;
   get value() {
     console.log('Getting the current value!');
