@@ -68,3 +68,13 @@ class IncreasingCounter2 {
     this._count++;
   }
 }
+
+// From the code above, it is immediately obvious that the foo class has two instance attributes—this is very clear at a glance. Additionally, writing it this way is relatively concise.
+class foo {
+  bar = 'hello';
+  baz = 'world';
+
+  constructor() {
+    // ...
+  }
+}
