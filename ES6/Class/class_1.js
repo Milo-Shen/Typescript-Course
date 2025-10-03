@@ -109,3 +109,13 @@ class Square {
 new Square()[methodName]();
 // methodName function is on the prototype of class Square
 Square.prototype[methodName]();
+
+// Class Expression
+const MyClass = class Me {
+  getClassName() {
+    return Me.name;
+  }
+};
+const inst = new MyClass();
+console.log('inst.getClassName(): ', inst.getClassName()); // Me
+// Me.name; // ReferenceError: Me is not defined
