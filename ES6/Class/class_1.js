@@ -97,3 +97,4 @@ const descriptor = Object.getOwnPropertyDescriptor(CustomHTMLElement.prototype, 
 console.log('descriptor', descriptor);
 console.log(`'get' in descriptor`, 'get' in descriptor); // true
 console.log(`'set' in descriptor`, 'set' in descriptor); // true
+console.log("CustomHTMLElement.prototype.hasOwnProperty('html'): ", CustomHTMLElement.prototype.hasOwnProperty('html')); // true
