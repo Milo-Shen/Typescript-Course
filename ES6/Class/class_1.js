@@ -98,3 +98,14 @@ console.log('descriptor', descriptor);
 console.log(`'get' in descriptor`, 'get' in descriptor); // true
 console.log(`'set' in descriptor`, 'set' in descriptor); // true
 console.log("CustomHTMLElement.prototype.hasOwnProperty('html'): ", CustomHTMLElement.prototype.hasOwnProperty('html')); // true
+
+// Property Expression
+const methodName = 'getArea';
+class Square {
+  [methodName]() {
+    console.log('Square: ', methodName);
+  }
+}
+new Square()[methodName]();
+// methodName function is on the prototype of class Square
+Square.prototype[methodName]();
