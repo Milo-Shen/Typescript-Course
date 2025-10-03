@@ -119,3 +119,19 @@ const MyClass = class Me {
 const inst = new MyClass();
 console.log('inst.getClassName(): ', inst.getClassName()); // Me
 // Me.name; // ReferenceError: Me is not defined
+
+// If "Me" is not used inside the class, it can be omitted, and the code can be written in the following form.
+const MyClass_1 = class {
+  /* ... */
+};
+let person = new (class {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayName() {
+    console.log(this.name);
+  }
+})('张三');
+
+person.sayName(); // "张三"
