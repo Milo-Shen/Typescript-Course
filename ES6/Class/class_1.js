@@ -145,7 +145,7 @@ class Foo {
 
 console.log('Foo.classMethod(): ', Foo.classMethod()); // 'hello'
 
-var foo1 = new Foo();
+const foo1 = new Foo();
 // foo1.classMethod(); // TypeError: foo1.classMethod is not a function
 
 // Note that if a static method contains the this keyword, this this refers to the class, not the instance.
@@ -184,11 +184,11 @@ class Foo4 {
     return 'hello';
   }
 }
-
 class Bar1 extends Foo4 {
   static classMethod() {
     return super.classMethod() + ', too';
   }
 }
-
 console.log('Bar1.classMethod(): ', Bar1.classMethod()); // "hello, too"
+
+// Static Property
