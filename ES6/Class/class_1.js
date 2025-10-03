@@ -168,3 +168,12 @@ class Foo2 {
 
 Foo2.bar(); // hello
 new Foo2().bar(); // hello
+
+// Static methods of a parent class can be inherited by its subclass.
+class Foo3 {
+  static classMethod() {
+    return 'hello';
+  }
+}
+class Bar extends Foo {}
+console.log('Bar.classMethod(): ', Bar.classMethod()); // 'hello'
