@@ -147,3 +147,22 @@ console.log('Foo.classMethod(): ', Foo.classMethod()); // 'hello'
 
 var foo1 = new Foo();
 // foo1.classMethod(); // TypeError: foo1.classMethod is not a function
+
+// Note that if a static method contains the this keyword, this this refers to the class, not the instance.
+class Foo2 {
+  static bar() {
+    this.baz();
+  }
+  static baz() {
+    console.log('hello baz');
+  }
+  baz() {
+    console.log('world baz');
+  }
+  bar() {
+    console.log('world bar');
+  }
+}
+
+Foo2.bar(); // hello
+new Foo2().bar(); // hello
