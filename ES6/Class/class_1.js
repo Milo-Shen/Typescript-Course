@@ -192,3 +192,15 @@ class Bar1 extends Foo4 {
 console.log('Bar1.classMethod(): ', Bar1.classMethod()); // "hello, too"
 
 // Static Property
+// Currently, only this syntax is valid. This is because ES6 explicitly specifies that within a Class, there are only static methods and no static properties.
+class Foo5 {}
+Foo5.prop = 1;
+console.log('Foo5.prop: ', Foo5.prop); // 1
+
+// There is now a proposal that introduces static properties for classes; the syntax is to add the static keyword before an instance property.
+class MyClass1 {
+  static myStaticProp = 42;
+  constructor() {
+    console.log(MyClass1.myStaticProp); // 42
+  }
+}
