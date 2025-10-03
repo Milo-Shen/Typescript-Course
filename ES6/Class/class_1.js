@@ -177,3 +177,18 @@ class Foo3 {
 }
 class Bar extends Foo {}
 console.log('Bar.classMethod(): ', Bar.classMethod()); // 'hello'
+
+// Static methods can also be called from the super object
+class Foo4 {
+  static classMethod() {
+    return 'hello';
+  }
+}
+
+class Bar1 extends Foo4 {
+  static classMethod() {
+    return super.classMethod() + ', too';
+  }
+}
+
+console.log('Bar1.classMethod(): ', Bar1.classMethod()); // "hello, too"
