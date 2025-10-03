@@ -149,6 +149,8 @@ var foo1 = new Foo();
 // foo1.classMethod(); // TypeError: foo1.classMethod is not a function
 
 // Note that if a static method contains the this keyword, this this refers to the class, not the instance.
+// In the code above, the static method bar calls this.baz. Here, this refers to the Foo class rather than an instance of Foo, which is equivalent to calling Foo.baz.
+// Additionally, it can be seen from this example that a static method can have the same name as a non-static method.
 class Foo2 {
   static bar() {
     this.baz();
