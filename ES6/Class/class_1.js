@@ -135,3 +135,15 @@ let person = new (class {
 })('张三');
 
 person.sayName(); // "张三"
+
+// Static Method
+class Foo {
+  static classMethod() {
+    return 'hello';
+  }
+}
+
+console.log('Foo.classMethod(): ', Foo.classMethod()); // 'hello'
+
+var foo1 = new Foo();
+// foo1.classMethod(); // TypeError: foo1.classMethod is not a function
