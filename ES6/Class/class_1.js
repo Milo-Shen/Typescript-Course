@@ -429,3 +429,18 @@ new A().m();
 // }
 
 // The static block
+// One issue with static properties is that if they have initialization logic, this logic must be written either outside the class or inside the constructor() method.
+// class C {
+//   static x = 234;
+//   static y;
+//   static z;
+// }
+//
+// try {
+//   const obj = doSomethingWith(C.x);
+//   C.y = obj.y
+//   C.z = obj.z;
+// } catch {
+//   C.y = ...;
+//   C.z = ...;
+// }
