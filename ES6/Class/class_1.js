@@ -273,3 +273,21 @@ class IncreasingCounter3 {
 // Whether inside or outside the class, trying to read a non-existent private attribute will result in an error.
 // This behavior is completely different from that of public attributes: if you read a non-existent public attribute, no error will be thrown, and it will only return undefined.
 // counter.#myCount; // SyntaxError: Private field '#myCount' must be declared in an enclosing class
+
+// Private Method
+class Foo6 {
+  #a;
+  #b;
+  constructor(a, b) {
+    this.#a = a;
+    this.#b = b;
+  }
+  #sum() {
+    return this.#a + this.#b;
+  }
+  printSum() {
+    console.log(this.#sum());
+  }
+}
+const foo6 = new Foo6(1, 2);
+foo6.printSum();
