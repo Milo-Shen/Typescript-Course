@@ -325,11 +325,9 @@ console.log('Foo7.getPrivateValue(new Foo7()): ', Foo7.getPrivateValue(new Foo7(
 class FakeMath {
   static PI = Math.PI;
   static #totallyRandomNumber = 4;
-
   static #computeRandomNumber() {
     return FakeMath.#totallyRandomNumber;
   }
-
   static random() {
     console.log('I heard you like random numbers…');
     return FakeMath.#computeRandomNumber();
