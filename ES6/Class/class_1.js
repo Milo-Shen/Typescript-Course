@@ -427,3 +427,5 @@ new A().m();
 //     console.log(#foo in this); // 报错
 //   }
 // }
+
+// The static block
