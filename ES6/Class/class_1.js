@@ -465,4 +465,6 @@ class C2 {
     }
   }
 }
+// In the code above, there is a static code block inside the class, which is a static block. Its advantage is that the initialization logic for static properties y and z is written inside the class and only runs once.
+// Each class allows multiple static blocks, and each static block can only access static properties declared earlier. Additionally, there cannot be a return statement inside a static block.
 console.log('C2.x, C2.y, C2.z: ', C2.x, C2.y, C2.z);
