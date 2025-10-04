@@ -320,3 +320,23 @@ class Foo7 {
   }
 }
 console.log('Foo7.getPrivateValue(new Foo7()): ', Foo7.getPrivateValue(new Foo7())); // 42
+
+// Static keywords can also be added before private attributes and private methods to indicate that they are static private attributes or static private methods.
+class FakeMath {
+  static PI = Math.PI;
+  static #totallyRandomNumber = 4;
+
+  static #computeRandomNumber() {
+    return FakeMath.#totallyRandomNumber;
+  }
+
+  static random() {
+    console.log('I heard you like random numbers…');
+    return FakeMath.#computeRandomNumber();
+  }
+}
+
+console.log('FakeMath.PI', FakeMath.PI); // 3.142857142857143
+console.log('FakeMath.random(): ', FakeMath.random());
+// FakeMath.#totallyRandomNumber; // Error: SyntaxError: Private field '#totallyRandomNumber' must be declared in an enclosing class
+// FakeMath.#computeRandomNumber(); // Error: SyntaxError: Private field '#totallyRandomNumber' must be declared in an enclosing class
