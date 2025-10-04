@@ -214,13 +214,13 @@ console.log("MyClass1.prototype.hasOwnProperty('staticMethod'): ", MyClass1.prot
 
 // Private methods and private property
 class Widget {
-  foo(baz) {
+  foo(params) {
     this.instanceProperty = 5;
-    bar.call(this, baz);
+    bar.call(this, params);
   }
 }
-function bar(baz) {
-  this.snaf = baz;
+function bar(params) {
+  this.snaf = params;
 }
 const widget = new Widget();
 widget.foo('test private method');
