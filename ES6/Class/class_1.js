@@ -395,3 +395,12 @@ console.log('D1.isD(d1): ', D1.isD(d1));
 // The in behavior of private property is different compared with public property
 // Private property behavior like Symbol
 console.log('D1.isD(d): ', D1.isD(d));
+
+// The in operator used in this way can also be used in conjunction with this.
+class A {
+  #foo = 0;
+  m() {
+    console.log(#foo in this); // true
+  }
+}
+new A().m();
