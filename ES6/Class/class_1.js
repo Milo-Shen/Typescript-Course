@@ -291,3 +291,18 @@ class Foo6 {
 }
 const foo6 = new Foo6(1, 2);
 foo6.printSum();
+
+// Private attributes can also have getter and setter methods set up.
+class Counter {
+  #xValue = 0;
+  constructor() {
+    console.log(this.#x);
+  }
+  get #x() {
+    return this.#xValue;
+  }
+  set #x(value) {
+    this.#xValue = value;
+  }
+}
+const counter = new Counter();
