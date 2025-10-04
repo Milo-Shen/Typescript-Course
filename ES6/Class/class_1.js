@@ -340,3 +340,20 @@ console.log('FakeMath.PI', FakeMath.PI); // 3.142857142857143
 console.log('FakeMath.random(): ', FakeMath.random());
 // FakeMath.#totallyRandomNumber; // Error: SyntaxError: Private field '#totallyRandomNumber' must be declared in an enclosing class
 // FakeMath.#computeRandomNumber(); // Error: SyntaxError: Private field '#totallyRandomNumber' must be declared in an enclosing class
+
+// The in operator
+// As mentioned earlier, directly accessing a non-existent private attribute of a class will result in an error, but accessing a non-existent public attribute will not.
+// This feature can be used to determine whether an object is an instance of a class.
+class C {
+  #brand;
+  static isC(obj) {
+    try {
+      obj.#brand;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+}
+const c = new C();
+console.log('C.isC(c)', C.isC(c));
