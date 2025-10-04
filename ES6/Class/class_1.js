@@ -367,3 +367,4 @@ class C1 {
 }
 const c1 = new C1();
 console.log('C1.isC(c1)', C1.isC(c1));
+console.log('C1.isC(c)', C1.isC(c));
