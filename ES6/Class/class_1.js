@@ -404,3 +404,11 @@ class A {
   }
 }
 new A().m();
+
+// Note that when checking for private attributes, the in operator can only be used inside the class.
+// Additionally, the private attribute being checked must be declared first; otherwise, an error will occur.
+// class A1 {
+//   m() {
+//     console.log(#foo in this); // 报错
+//   }
+// }
