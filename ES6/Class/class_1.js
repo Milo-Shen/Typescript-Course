@@ -246,6 +246,6 @@ class MyClass2 {
 const class2_obj = new MyClass2();
 class2_obj.foo('test private method');
 console.log('class2_obj[snaf]: ', class2_obj[snaf]);
-console.log('Reflect.ownKeys(MyClass2.prototype: ', Reflect.ownKeys(MyClass2.prototype));
+console.log('Reflect.ownKeys(MyClass2.prototype: ', Reflect.ownKeys(MyClass2.prototype)); // [ 'constructor', 'foo', Symbol(privateMethod) ]
 // So, do not export Symbol value, the method will be private method
 console.log("class2_obj['Symbol(privateMethod)']: ", class2_obj['Symbol(privateMethod)']);
