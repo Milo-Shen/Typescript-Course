@@ -495,4 +495,8 @@ class C4 {
     getX = (obj) => obj.#x;
   }
 }
+// In the example above, #x is a private attribute of the class.
+// If the getX() method outside the class wants to access this attribute, previously it had to be written inside the class's constructor() method.
+// In that case, the getX() method would be defined every time a new instance is created.
+// Now it can be written inside the static block, so that it is only defined once when the class is created.
 console.log('getX(new C4()): ', getX(new C4())); // 1
