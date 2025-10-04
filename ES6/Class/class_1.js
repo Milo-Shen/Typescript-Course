@@ -228,3 +228,24 @@ widget.foo('test private method');
 console.log('widget.snaf: ', widget.snaf);
 console.log("widget.hasOwnProperty('snaf'): ", widget.hasOwnProperty('snaf'));
 console.log("widget.hasOwnProperty('instanceProperty'): ", widget.hasOwnProperty('instanceProperty'));
+
+// Make use of the uniqueness of Symbol values to name the private method with a Symbol value.
+const privateMethod = Symbol('privateMethod');
+const snaf = Symbol('snaf');
+class MyClass2 {
+  // 公有方法
+  foo(params) {
+    this[privateMethod](params);
+  }
+
+  // 私有方法
+  [privateMethod](params) {
+    this[snaf] = params;
+  }
+}
+const class2_obj = new MyClass2();
+class2_obj.foo('test private method');
+console.log('class2_obj[snaf]: ', class2_obj[snaf]);
+console.log('Reflect.ownKeys(MyClass2.prototype: ', Reflect.ownKeys(MyClass2.prototype));
+// So, do not export Symbol value, the method will be private method
+console.log("class2_obj['Symbol(privateMethod)']: ", class2_obj['Symbol(privateMethod)']);
