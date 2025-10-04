@@ -211,3 +211,19 @@ console.log("MyClass1.hasOwnProperty('myStaticProp'): ", MyClass1.hasOwnProperty
 console.log("MyClass1.prototype.hasOwnProperty('myStaticProp'): ", MyClass1.prototype.hasOwnProperty('myStaticProp')); // false
 console.log("MyClass1.hasOwnProperty('staticMethod'): ", MyClass1.hasOwnProperty('staticMethod')); // true
 console.log("MyClass1.prototype.hasOwnProperty('staticMethod'): ", MyClass1.prototype.hasOwnProperty('staticMethod')); // false
+
+// Private methods and private property
+class Widget {
+  foo(baz) {
+    this.instanceProperty = 5;
+    bar.call(this, baz);
+  }
+}
+function bar(baz) {
+  this.snaf = baz;
+}
+const widget = new Widget();
+widget.foo('test private method');
+console.log('widget.snaf: ', widget.snaf);
+console.log("widget.hasOwnProperty('snaf'): ", widget.hasOwnProperty('snaf'));
+console.log("widget.hasOwnProperty('instanceProperty'): ", widget.hasOwnProperty('instanceProperty'));
