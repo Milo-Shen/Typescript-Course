@@ -271,8 +271,15 @@ class IncreasingCounter3 {
   //   // SyntaxError: Private field '#count' must be declared in an enclosing class
   //   this.#count = 3;
   // }
+  constructor() {
+    // the priority of instance level method is higher than prototype level method
+    this.getCount = () => this.#count + 1;
+  }
   get value() {
     console.log('Getting the current value!');
+    return this.#count;
+  }
+  getCount() {
     return this.#count;
   }
   increment() {
@@ -280,6 +287,7 @@ class IncreasingCounter3 {
   }
 }
 
+console.log('new IncreasingCounter3().getCount(): ', new IncreasingCounter3().getCount());
 // const counter = new IncreasingCounter3();
 // counter.#count; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
 // counter.#count = 42; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
