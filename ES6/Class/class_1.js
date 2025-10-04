@@ -368,3 +368,30 @@ class C1 {
 const c1 = new C1();
 console.log('C1.isC(c1)', C1.isC(c1));
 console.log('C1.isC(c)', C1.isC(c));
+
+class D {
+  brand;
+  static isD(obj) {
+    try {
+      obj.brand;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+}
+const d = new D();
+console.log('D.isD(d)', D.isD(d));
+
+// Use in operator to replace try...catch...
+class D1 {
+  brand;
+  static isD(obj) {
+    return 'brand' in obj;
+  }
+}
+const d1 = new D1();
+console.log('D1.isD(d1): ', D1.isD(d1));
+// The in behavior of private property is different compared with public property
+// Private property behavior like Symbol
+console.log('D1.isD(d): ', D1.isD(d));
