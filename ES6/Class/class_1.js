@@ -311,3 +311,12 @@ class Counter {
 }
 const counter = new Counter();
 counter.add();
+
+// Private attributes are not limited to being referenced via this; as long as it is within the class, instances can also reference private attributes.
+class Foo7 {
+  #privateValue = 42;
+  static getPrivateValue(foo) {
+    return foo.#privateValue;
+  }
+}
+console.log('Foo7.getPrivateValue(new Foo7()): ', Foo7.getPrivateValue(new Foo7())); // 42
