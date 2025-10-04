@@ -444,3 +444,25 @@ new A().m();
 //   C.y = ...;
 //   C.z = ...;
 // }
+
+// ES2022 The static block
+class C2 {
+  static x = 1024;
+  static y;
+  static z;
+
+  // To address this issue, ES2022 introduced static blocks, which allow setting a code block inside the class.
+  // This block runs when the class is created and only runs once, with its main role being to initialize static properties.
+  // Subsequently, when new instances of the class are created, this block will not run.
+  static {
+    try {
+      const obj = { x: this.x, y: this.x + 1, z: this.x + 2 };
+      this.y = obj.y;
+      this.z = obj.z;
+    } catch {
+      this.y = -1;
+      this.z = -1;
+    }
+  }
+}
+console.log('C2.x, C2.y, C2.z: ', C2.x, C2.y, C2.z);
