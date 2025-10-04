@@ -357,3 +357,13 @@ class C {
 }
 const c = new C();
 console.log('C.isC(c)', C.isC(c));
+
+// Use in operator to replace try...catch...
+class C1 {
+  #brand;
+  static isC(obj) {
+    return #brand in obj;
+  }
+}
+const c1 = new C1();
+console.log('C1.isC(c1)', C1.isC(c1));
