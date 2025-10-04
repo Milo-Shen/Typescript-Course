@@ -476,4 +476,5 @@ class C3 {
     C3.x = 3; // 3
   }
 }
+// In the example above, both this.x and C.x can access the static property x.
 console.log('C3.x: ', C3.x);
