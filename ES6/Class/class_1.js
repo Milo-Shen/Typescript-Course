@@ -201,13 +201,24 @@ console.log('Foo5.prop: ', Foo5.prop); // 1
 class MyClass1 {
   static myStaticProp = 42;
   static staticMethod() {
-    console.log('MyClass1 staticMethod: ', this.myStaticProp);
+    console.log('MyClass1 staticMethod', this); // this here is: [class MyClass1] { myStaticProp: 42 }
+    console.log('MyClass1 staticMethod this instanceof MyClass1: ', this instanceof MyClass1);
+    console.log('MyClass1 staticMethod this === MyClass1: ', this === MyClass1);
+    console.log('MyClass1 staticMethod called result: ', this.myStaticProp);
+  }
+  instanceMethod() {
+    console.log('MyClass1 instanceMethod', this); // this here is: MyClass1 {}
+    console.log('MyClass1 instanceMethod this instanceof MyClass1: ', this instanceof MyClass1);
+    console.log('MyClass1 instanceMethod this === MyClass1: ', this === MyClass1);
+    console.log('MyClass1 instanceMethod called result: ', this.myStaticProp); // static 成员不可访问
   }
   constructor() {
     console.log(MyClass1.myStaticProp); // 42
   }
 }
-
+const myClass1 = new MyClass1();
+MyClass1.staticMethod();
+myClass1.instanceMethod();
 console.log('MyClass1.myStaticProp: ', MyClass1.myStaticProp); // 5
 // The static methods and static properties are defined on class definition objects not on it's prototype
 console.log("MyClass1.hasOwnProperty('myStaticProp'): ", MyClass1.hasOwnProperty('myStaticProp')); // true
