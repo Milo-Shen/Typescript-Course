@@ -298,6 +298,10 @@ class Counter {
   constructor() {
     console.log(this.#x);
   }
+  add() {
+    this.#x++;
+    console.log(this.#x, this.#xValue);
+  }
   get #x() {
     return this.#xValue;
   }
@@ -306,3 +310,4 @@ class Counter {
   }
 }
 const counter = new Counter();
+counter.add();
