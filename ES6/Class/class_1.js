@@ -334,6 +334,8 @@ class FakeMath {
   }
 }
 
+// In the code above, #totallyRandomNumber is a private attribute, and #computeRandomNumber() is a private method.
+// They can only be called inside the FakeMath class; calling them from outside will result in an error.
 console.log('FakeMath.PI', FakeMath.PI); // 3.142857142857143
 console.log('FakeMath.random(): ', FakeMath.random());
 // FakeMath.#totallyRandomNumber; // Error: SyntaxError: Private field '#totallyRandomNumber' must be declared in an enclosing class
