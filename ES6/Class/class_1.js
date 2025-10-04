@@ -486,3 +486,13 @@ class C3 {
 }
 // In the example above, both this.x and C.x can access the static property x.
 console.log('C3.x: ', C3.x);
+
+// In addition to the initialization of static properties, the static block has another role: to share private attributes with code outside the class.
+let getX;
+class C4 {
+  #x = '# C4';
+  static {
+    getX = (obj) => obj.#x;
+  }
+}
+console.log('getX(new C4()): ', getX(new C4())); // 1
