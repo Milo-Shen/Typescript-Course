@@ -213,6 +213,7 @@ console.log("MyClass1.hasOwnProperty('staticMethod'): ", MyClass1.hasOwnProperty
 console.log("MyClass1.prototype.hasOwnProperty('staticMethod'): ", MyClass1.prototype.hasOwnProperty('staticMethod')); // false
 
 // Private methods and private property
+// Method 1: Move the private methods out of the class, because all methods inside the class are visible to the outside.
 class Widget {
   foo(params) {
     this.instanceProperty = 5;
