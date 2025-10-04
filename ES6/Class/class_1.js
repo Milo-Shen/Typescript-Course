@@ -269,3 +269,7 @@ class IncreasingCounter3 {
 // const counter = new IncreasingCounter3();
 // counter.#count; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
 // counter.#count = 42; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
+
+// Whether inside or outside the class, trying to read a non-existent private attribute will result in an error.
+// This behavior is completely different from that of public attributes: if you read a non-existent public attribute, no error will be thrown, and it will only return undefined.
+// counter.#myCount; // SyntaxError: Private field '#myCount' must be declared in an enclosing class
