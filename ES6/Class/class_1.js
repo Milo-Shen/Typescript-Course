@@ -200,11 +200,14 @@ console.log('Foo5.prop: ', Foo5.prop); // 1
 // There is now a proposal that introduces static properties for classes; the syntax is to add the static keyword before an instance property.
 class MyClass1 {
   static myStaticProp = 42;
-  static staticMethod() {}
+  static staticMethod() {
+    console.log('MyClass1 staticMethod: ', this.myStaticProp);
+  }
   constructor() {
     console.log(MyClass1.myStaticProp); // 42
   }
 }
+
 console.log('MyClass1.myStaticProp: ', MyClass1.myStaticProp); // 5
 // The static methods and static properties are defined on class definition objects not on it's prototype
 console.log("MyClass1.hasOwnProperty('myStaticProp'): ", MyClass1.hasOwnProperty('myStaticProp')); // true
