@@ -249,3 +249,23 @@ console.log('class2_obj[snaf]: ', class2_obj[snaf]);
 console.log('Reflect.ownKeys(MyClass2.prototype: ', Reflect.ownKeys(MyClass2.prototype)); // [ 'constructor', 'foo', Symbol(privateMethod) ]
 // So, do not export Symbol value, the method will be private method
 console.log("class2_obj['Symbol(privateMethod)']: ", class2_obj['Symbol(privateMethod)']);
+
+// ES2022: The Formal Writing of Private Attributes
+class IncreasingCounter3 {
+  #count = 0;
+  // constructor() {
+  //   // SyntaxError: Private field '#count' must be declared in an enclosing class
+  //   this.#count = 3;
+  // }
+  get value() {
+    console.log('Getting the current value!');
+    return this.#count;
+  }
+  increment() {
+    this.#count++;
+  }
+}
+
+// const counter = new IncreasingCounter3();
+// counter.#count; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
+// counter.#count = 42; // error: SyntaxError: Private field '#count' must be declared in an enclosing class
