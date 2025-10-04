@@ -166,8 +166,8 @@ class Foo2 {
   }
 }
 
-Foo2.bar(); // hello
-new Foo2().bar(); // hello
+Foo2.bar(); // hello baz
+new Foo2().bar(); // world ba
 
 // Static methods of a parent class can be inherited by its subclass.
 class Foo3 {
