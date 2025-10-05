@@ -212,4 +212,16 @@ class B7 extends A7 {
   }
 }
 let b7 = new B7();
+// In the code above, p is a property of the instance of parent class A, so super.p cannot reference it.
 console.log('b7.m: ', b7.m);
+
+// If a property is defined on the prototype object of the parent class, super can access it.
+class A8 {}
+A8.prototype.x = 'A8';
+class B8 extends A8 {
+  constructor() {
+    super();
+    console.log(super.x); // A8
+  }
+}
+new B8();
