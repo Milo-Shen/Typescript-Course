@@ -251,3 +251,18 @@ let b9 = new B9();
 b9.m(); // B9
 
 // Important !:  Since this refers to the subclass instance, if a property is assigned a value via super, then super acts as this at this point, and the property being assigned will become a property of the subclass instance.
+class A10 {
+  constructor() {
+    this.x = 1;
+  }
+}
+class B10 extends A10 {
+  constructor() {
+    super();
+    this.x = 2;
+    super.x = 3;
+    console.log('super.x : ', super.x); // undefined
+    console.log('this.x : ', this.x); // 3
+  }
+}
+new B10();
