@@ -106,6 +106,22 @@ class B1 extends A1 {
   }
 }
 
-const b1 = new B1();
+new B1();
 console.log('B1.foo: ', B1.foo);
 console.log('A1.foo: ', A1.foo);
+
+// However, because this copying is a shallow copy, if the value of a parent class's static property is an object, the subclass's static property will also point to this object.
+// This is because a shallow copy only copies the memory address of the object.
+class A2 {
+  static foo = { n: 100 };
+}
+class B2 extends A2 {
+  constructor() {
+    super();
+    B2.foo.n--;
+  }
+}
+
+new B2();
+console.log('B2.foo.n: ', B2.foo.n); // 99
+console.log('A2.foo.n: ', A2.foo.n); // 99
