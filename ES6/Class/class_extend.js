@@ -24,6 +24,7 @@ class Point {
     this.y = y;
   }
 }
+
 class ColorPoint extends Point {
   constructor(x, y, color) {
     // ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
