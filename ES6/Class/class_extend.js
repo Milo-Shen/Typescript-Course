@@ -128,3 +128,9 @@ class B2 extends A2 {
 new B2();
 console.log('B2.foo.n: ', B2.foo.n); // 99
 console.log('A2.foo.n: ', A2.foo.n); // 99
+
+// Object.getPrototypeOf()
+class Point1 {}
+class ColorPoint1 extends Point1 {}
+console.log(Object.getPrototypeOf(ColorPoint1) === Point1);
+console.log(Object.getPrototypeOf(new Point1()) === Point1.prototype);
