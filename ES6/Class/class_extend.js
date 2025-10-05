@@ -312,3 +312,15 @@ A11.x = 'A11';
 A11.print();
 B11.x = 3;
 B11.m(); // 3
+
+// When using super, you must explicitly specify whether it is used as a function or an object; otherwise, an error will be reported.
+// In the code above, super.valueOf() indicates that super is used as an object, so no error will be reported.
+// At the same time, since super makes this refer to an instance of B, super.valueOf() returns an instance of B.
+class A12 {}
+class B12 extends A12 {
+  constructor() {
+    super();
+    console.log(super.valueOf() instanceof B12); // true
+  }
+}
+new B12();
