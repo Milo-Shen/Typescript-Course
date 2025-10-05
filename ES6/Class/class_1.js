@@ -641,3 +641,21 @@ class Square1 extends Rectangle {
   }
 }
 new Square1(3); // 输出 false
+
+class Shape {
+  constructor() {
+    if (new.target === Shape) {
+      throw new Error('本类不能实例化');
+    }
+  }
+}
+
+class Rectangle2 extends Shape {
+  constructor(length, width) {
+    super();
+  }
+}
+
+// This feature can be used to create classes that cannot be used independently and must be inherited before use (i.e., abstract-like classes in ES6).
+// const x = new Shape();
+const y = new Rectangle(3, 4);
