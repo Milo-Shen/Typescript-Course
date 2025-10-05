@@ -140,3 +140,16 @@ console.log(Object.getPrototypeOf(new Point1()) === Point1.prototype); // true
 
 // Super Keyword
 // The keyword "super" can be used both as a function and as an object. Its usage is completely different in these two cases.
+// Case 1: When super is called as a function
+class A3 {
+  constructor() {
+    console.log(new.target.name);
+  }
+}
+class B3 extends A3 {
+  constructor() {
+    super();
+  }
+}
+new A3(); // A3
+new B3(); // B3
