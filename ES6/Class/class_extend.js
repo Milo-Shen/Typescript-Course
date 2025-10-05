@@ -94,3 +94,18 @@ class A {
 class B extends A {}
 // The static properties and static methods of a parent class are also inherited by its subclasses.
 B.hello(); // hello world
+
+// Note that static properties are inherited through shallow copying.
+class A1 {
+  static foo = 100;
+}
+class B1 extends A1 {
+  constructor() {
+    super();
+    B1.foo--;
+  }
+}
+
+const b1 = new B1();
+console.log('B1.foo: ', B1.foo);
+console.log('A1.foo: ', A1.foo);
