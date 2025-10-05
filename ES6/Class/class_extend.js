@@ -165,4 +165,6 @@ class A4 {
 class B4 extends A4 {
   name = 'B4';
 }
+// In the example above, the last line outputs "A" instead of "B".
+// The reason is that when super() is executed, the name property of class B has not yet been bound to this—therefore, this.name retrieves the name property of class A.
 new B4(); // My name is A4
