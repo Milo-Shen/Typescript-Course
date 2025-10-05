@@ -626,9 +626,17 @@ const person1 = new Person('张三');
 // If new.target is called inside a Class, it returns the current Class.
 class Rectangle {
   constructor(length, width) {
+    console.log('new.target: ', new.target);
     console.log('new.target === Rectangle', new.target === Rectangle);
     this.length = length;
     this.width = width;
   }
 }
-new Rectangle(3, 4); // 输出 true
+new Rectangle(3, 4);
+
+class Square1 extends Rectangle {
+  constructor(length, width) {
+    super(length, width);
+  }
+}
+new Square1(3); // 输出 false
