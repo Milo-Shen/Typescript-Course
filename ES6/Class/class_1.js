@@ -575,3 +575,24 @@ class Obj {
 // At this point, the runtime environment where the arrow function resides is definitely the instance object, so this will always point to the instance object.
 const myObj = new Obj();
 console.log('myObj.getThis() === myObj : ', myObj.getThis() === myObj); // true
+
+// Solution 3: Use Proxy to automatically bind this when retrieving methods.
+function selfish(target) {
+  const cache = new WeakMap();
+  const handler = {
+    get(target, key) {
+      const value = Reflect.get(target, key);
+      if (typeof value !== 'function') {
+        return value;
+      }
+      if (!cache.has(value)) {
+        cache.set(value, value.bind(target));
+      }
+      return cache.get(value);
+    },
+  };
+  return new Proxy(target, handler);
+}
+
+const logger2 = selfish(new Logger());
+logger2.printName('there');
