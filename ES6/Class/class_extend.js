@@ -122,6 +122,9 @@ class B2 extends A2 {
   }
 }
 
+// In the example above, the value of A.foo is an object.
+// Due to shallow copying, B.foo and A.foo point to the same object.
+// Therefore, when the subclass B modifies the property values of this object, it will affect the parent class A.
 new B2();
 console.log('B2.foo.n: ', B2.foo.n); // 99
 console.log('A2.foo.n: ', A2.foo.n); // 99
