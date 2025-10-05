@@ -168,3 +168,13 @@ class B4 extends A4 {
 // In the example above, the last line outputs "A" instead of "B".
 // The reason is that when super() is executed, the name property of class B has not yet been bound to this—therefore, this.name retrieves the name property of class A.
 new B4(); // My name is A4
+
+// When used as a function, super() can only be employed within the constructor of a subclass;
+// using it elsewhere will result in an error.
+// class A5 {}
+// class B5 extends A5 {
+//   m() {
+//     // SyntaxError: 'super' keyword unexpected here
+//     super();
+//   }
+// }
