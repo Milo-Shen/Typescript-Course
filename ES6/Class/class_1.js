@@ -512,3 +512,7 @@ console.log('getX(new C4()): ', getX(new C4())); // 1
   let Foo = class {};
   class Bar extends Foo {}
 }
+
+// Name Property
+class Point1 {}
+console.log('Point1.name: ', Point1.name); // "Point1"
