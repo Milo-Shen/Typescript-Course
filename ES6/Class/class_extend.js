@@ -198,3 +198,18 @@ class B6 extends A6 {
 // In the code above, super.p() in subclass B uses super as an object.
 // At this point, since super is in an instance method, it refers to A.prototype—so super.p() is equivalent to A.prototype.p().
 new B6();
+
+// It should be noted here that since super refers to the parent class's prototype object,
+// methods or properties defined on the parent class instance cannot be called via super.
+class A7 {
+  constructor() {
+    this.p = 2;
+  }
+}
+class B7 extends A7 {
+  get m() {
+    return super.p;
+  }
+}
+let b7 = new B7();
+console.log('b7.m: ', b7.m);
