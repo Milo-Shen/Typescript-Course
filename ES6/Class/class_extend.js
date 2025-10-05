@@ -68,3 +68,19 @@ class Bar1 extends Foo1 {
     // this.#m(); // Error: SyntaxError: Private field '#m' must be declared in an enclosing class
   }
 }
+
+// If the parent class defines read and write methods for private properties, subclasses can read and write those private properties through these methods.
+class Foo2 {
+  #p = 1;
+  getP() {
+    return this.#p;
+  }
+}
+
+class Bar2 extends Foo2 {
+  constructor() {
+    super();
+    console.log('this.getP(): ', this.getP());
+  }
+}
+new Bar2();
