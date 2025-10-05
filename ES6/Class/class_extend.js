@@ -137,3 +137,6 @@ class ColorPoint1 extends Point1 {}
 console.log(Object.getPrototypeOf(ColorPoint1) === Point1); // true
 console.log(ColorPoint1.__proto__ === Point1); // true
 console.log(Object.getPrototypeOf(new Point1()) === Point1.prototype); // true
+
+// Super Keyword
+// The keyword "super" can be used both as a function and as an object. Its usage is completely different in these two cases.
