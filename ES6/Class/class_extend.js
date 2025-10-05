@@ -324,3 +324,11 @@ class B12 extends A12 {
   }
 }
 new B12();
+
+// Since objects always inherit from other objects, the super keyword can be used in any object.
+const obj = {
+  toString() {
+    return 'MyObject: ' + super.toString();
+  },
+};
+console.log('obj.toString(): ', obj.toString()); // MyObject: [object Object]
