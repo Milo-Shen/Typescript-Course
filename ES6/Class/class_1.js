@@ -545,5 +545,33 @@ class Logger {
 const logger = new Logger();
 // In the code above, this in the printName method points to an instance of the Logger class by default.
 // However, if this method is extracted and used independently, this will point to the environment where the method is running (since the interior of a class operates in strict mode, this actually points to undefined), which will result in a failure to find the print method and thus throw an error.
-const { printName } = logger;
+// const { printName } = logger;
 // printName(); // TypeError: Cannot read property 'print' of undefined
+
+// Solution 1: Bind this in the constructor, so that the print method will no longer be undefined.
+class Logger1 {
+  constructor() {
+    this.printName = this.printName.bind(this);
+  }
+  printName(name = 'there') {
+    this.print(`Hello ${name}`);
+  }
+  print(text) {
+    console.log(text);
+  }
+}
+const logger1 = new Logger1();
+const { printName } = logger1;
+printName();
+
+// Solution 2: Use arrow functions
+class Obj {
+  constructor() {
+    this.getThis = () => this;
+  }
+}
+// The this inside an arrow function always points to the object where the arrow function is defined.
+// In the code above, the arrow function is located inside the constructor, and its definition takes effect when the constructor is executed.
+// At this point, the runtime environment where the arrow function resides is definitely the instance object, so this will always point to the instance object.
+const myObj = new Obj();
+console.log('myObj.getThis() === myObj : ', myObj.getThis() === myObj); // true
