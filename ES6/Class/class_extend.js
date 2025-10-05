@@ -132,5 +132,7 @@ console.log('A2.foo.n: ', A2.foo.n); // 99
 // Object.getPrototypeOf()
 class Point1 {}
 class ColorPoint1 extends Point1 {}
+// The Object.getPrototypeOf() method can be used to retrieve the parent class from a subclass.
+// todo: need deep understanding of Object.getPrototypeOf
 console.log(Object.getPrototypeOf(ColorPoint1) === Point1);
 console.log(Object.getPrototypeOf(new Point1()) === Point1.prototype);
