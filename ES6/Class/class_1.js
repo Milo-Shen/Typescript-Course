@@ -532,3 +532,18 @@ class Foo8 {
 for (let x of new Foo8('hello', 'world')) {
   console.log('Class Generator Method: ', x);
 }
+
+// The Binding of this
+class Logger {
+  printName(name = 'there') {
+    this.print(`Hello ${name}`);
+  }
+  print(text) {
+    console.log(text);
+  }
+}
+const logger = new Logger();
+// In the code above, this in the printName method points to an instance of the Logger class by default.
+// However, if this method is extracted and used independently, this will point to the environment where the method is running (since the interior of a class operates in strict mode, this actually points to undefined), which will result in a failure to find the print method and thus throw an error.
+const { printName } = logger;
+// printName(); // TypeError: Cannot read property 'print' of undefined
