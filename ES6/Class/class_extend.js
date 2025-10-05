@@ -245,5 +245,7 @@ class B9 extends A9 {
     super.print();
   }
 }
+// In the code above, although super.print() calls A.prototype.print(), the this inside A.prototype.print() refers to an instance of subclass B, resulting in an output of 2 instead of 1.
+// In other words, what is actually executed is super.print.call(this).
 let b9 = new B9();
 b9.m(); // B9
