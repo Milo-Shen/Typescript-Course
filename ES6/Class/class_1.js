@@ -516,3 +516,19 @@ console.log('getX(new C4()): ', getX(new C4())); // 1
 // Name Property
 class Point1 {}
 console.log('Point1.name: ', Point1.name); // "Point1"
+
+// Generator Method
+class Foo8 {
+  constructor(...args) {
+    this.args = args;
+  }
+  *[Symbol.iterator]() {
+    for (let arg of this.args) {
+      yield arg;
+    }
+  }
+}
+
+for (let x of new Foo8('hello', 'world')) {
+  console.log('Class Generator Method: ', x);
+}
