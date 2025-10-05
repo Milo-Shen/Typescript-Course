@@ -596,3 +596,29 @@ function selfish(target) {
 
 const logger2 = selfish(new Logger());
 logger2.printName('there');
+
+// new.target property
+function Person(name) {
+  if (new.target !== undefined) {
+    this.name = name;
+  } else {
+    throw new Error('必须使用 new 命令生成实例');
+  }
+}
+
+// 另一种写法
+function Person1(name) {
+  if (new.target === Person) {
+    this.name = name;
+  } else {
+    throw new Error('必须使用 new 命令生成实例');
+  }
+}
+
+// new is a command used to create instance objects from a constructor function.
+// ES6 introduced a new.target property for the new command;
+// this property is typically used within a constructor function and returns the constructor function on which the new command acts.
+// If the constructor function is not called via the new command or Reflect.construct(), new.target will return undefined.
+// Therefore, this property can be used to determine how the constructor function is invoked.
+const person1 = new Person('张三');
+// const notAPerson = Person.call(person1, '张三'); // Error
