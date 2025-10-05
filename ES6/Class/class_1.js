@@ -500,3 +500,7 @@ class C4 {
 // In that case, the getX() method would be defined every time a new instance is created.
 // Now it can be written inside the static block, so that it is only defined once when the class is created.
 console.log('getX(new C4()): ', getX(new C4())); // 1
+
+// Classes do not have variable hoisting, which is completely different from ES5.
+// new Foo(); // ReferenceError
+// class Foo {}
