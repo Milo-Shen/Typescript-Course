@@ -45,5 +45,7 @@ class ColorPoint extends Point {
 //   }
 // }
 const cp = new ColorPoint(25, 8, 'green');
+// In the example above, the instance object cp is an instance of both the ColorPoint and Point classes at the same time.
+// This behavior is exactly consistent with that of ES5.
 console.log('cp instanceof ColorPoint: ', cp instanceof ColorPoint);
 console.log('cp instanceof Point: ', cp instanceof Point);
