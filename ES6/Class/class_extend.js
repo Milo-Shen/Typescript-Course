@@ -195,4 +195,6 @@ class B6 extends A6 {
     console.log(super.p === A6.prototype.p);
   }
 }
+// In the code above, super.p() in subclass B uses super as an object.
+// At this point, since super is in an instance method, it refers to A.prototype—so super.p() is equivalent to A.prototype.p().
 new B6();
