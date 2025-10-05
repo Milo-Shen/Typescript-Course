@@ -33,3 +33,17 @@ class ColorPoint extends Point {
     this.color = color; // 正确
   }
 }
+
+// If a subclass does not define a constructor() method, this method will be added by default, and it will call super() internally.
+// In other words, regardless of whether it is explicitly defined or not, every subclass has a constructor() method.
+// class ColorPoint extends Point {}
+//
+// // Equals to
+// class ColorPoint extends Point {
+//   constructor(...args) {
+//     super(...args);
+//   }
+// }
+const cp = new ColorPoint(25, 8, 'green');
+console.log('cp instanceof ColorPoint: ', cp instanceof ColorPoint);
+console.log('cp instanceof Point: ', cp instanceof Point);
