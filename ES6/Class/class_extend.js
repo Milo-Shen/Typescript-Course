@@ -49,3 +49,22 @@ const cp = new ColorPoint(25, 8, 'green');
 // This behavior is exactly consistent with that of ES5.
 console.log('cp instanceof ColorPoint: ', cp instanceof ColorPoint);
 console.log('cp instanceof Point: ', cp instanceof Point);
+
+// Inheritance of private properties and private methods
+// All properties and methods of a parent class will be inherited by its subclasses, except for private properties and methods.
+// A subclass cannot inherit the private properties and methods of its parent class;
+// in other words, private properties can only be used within the class where they are defined.
+class Foo1 {
+  #p = 1;
+  #m() {
+    console.log('hello');
+  }
+}
+
+class Bar1 extends Foo1 {
+  constructor() {
+    super();
+    // console.log(this.#p); // Error: SyntaxError: Private field '#p' must be declared in an enclosing class
+    // this.#m(); // Error: SyntaxError: Private field '#m' must be declared in an enclosing class
+  }
+}
