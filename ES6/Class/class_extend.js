@@ -153,3 +153,16 @@ class B3 extends A3 {
 }
 new A3(); // A3
 new B3(); // B3
+
+// However, when super() is executed in the subclass constructor, the subclass's properties and methods have not yet been bound to this.
+// Therefore, if there are properties with the same name, the property obtained at this point is the one from the parent class.
+class A4 {
+  name = 'A4';
+  constructor() {
+    console.log('My name is ' + this.name);
+  }
+}
+class B4 extends A4 {
+  name = 'B4';
+}
+new B4(); // My name is A4
