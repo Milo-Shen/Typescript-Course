@@ -249,3 +249,5 @@ class B9 extends A9 {
 // In other words, what is actually executed is super.print.call(this).
 let b9 = new B9();
 b9.m(); // B9
+
+// Important !:  Since this refers to the subclass instance, if a property is assigned a value via super, then super acts as this at this point, and the property being assigned will become a property of the subclass instance.
