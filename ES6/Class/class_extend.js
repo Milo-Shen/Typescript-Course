@@ -266,3 +266,24 @@ class B10 extends A10 {
   }
 }
 new B10();
+
+// If super is used as an object in a static method, then super refers to the parent class itself at this point, rather than the parent class's prototype object.
+class Parent {
+  static myMethod(msg) {
+    console.log('static', msg);
+  }
+  myMethod(msg) {
+    console.log('instance', msg);
+  }
+}
+class Child extends Parent {
+  static myMethod(msg) {
+    super.myMethod(msg);
+  }
+  myMethod(msg) {
+    super.myMethod(msg);
+  }
+}
+Child.myMethod(1); // static 1
+const child = new Child();
+child.myMethod(2); // instance 2
