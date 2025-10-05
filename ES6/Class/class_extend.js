@@ -188,7 +188,6 @@ class A6 {
     return 'A6';
   }
 }
-
 class B6 extends A6 {
   constructor() {
     super();
