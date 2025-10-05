@@ -622,3 +622,13 @@ function Person1(name) {
 // Therefore, this property can be used to determine how the constructor function is invoked.
 const person1 = new Person('张三');
 // const notAPerson = Person.call(person1, '张三'); // Error
+
+// If new.target is called inside a Class, it returns the current Class.
+class Rectangle {
+  constructor(length, width) {
+    console.log('new.target === Rectangle', new.target === Rectangle);
+    this.length = length;
+    this.width = width;
+  }
+}
+new Rectangle(3, 4); // 输出 true
