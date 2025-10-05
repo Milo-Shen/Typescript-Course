@@ -289,3 +289,26 @@ class Child extends Parent {
 Child.myMethod(1); // static 1
 const child = new Child();
 child.myMethod(2); // instance 2
+
+// Additionally, when a parent class's method is called via super in a static method of a subclass, the this inside the method refers to the current subclass itself, rather than an instance of the subclass.
+class A11 {
+  constructor() {
+    this.x = 1;
+  }
+  static print() {
+    console.log(this.x);
+  }
+}
+class B11 extends A11 {
+  constructor() {
+    super();
+    this.x = 2;
+  }
+  static m() {
+    super.print();
+  }
+}
+A11.x = 'A11';
+A11.print();
+B11.x = 3;
+B11.m(); // 3
