@@ -634,6 +634,7 @@ class Rectangle {
 }
 new Rectangle(3, 4);
 
+// When a subclass inherits from a parent class, new.target will return the subclass.
 class Square1 extends Rectangle {
   constructor(length, width) {
     super(length, width);
