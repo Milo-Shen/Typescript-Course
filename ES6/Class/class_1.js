@@ -504,3 +504,11 @@ console.log('getX(new C4()): ', getX(new C4())); // 1
 // Classes do not have variable hoisting, which is completely different from ES5.
 // new Foo(); // ReferenceError
 // class Foo {}
+
+// The code above will not throw an error, because when Bar inherits from Foo, Foo has already been defined.
+// However, if class hoisting existed, the code above would throw an error.
+// This is because the class would be hoisted to the top of the code, while the line where Foo is defined would not be hoisted—resulting in Foo being undefined when Bar inherits from it.
+{
+  let Foo = class {};
+  class Bar extends Foo {}
+}
