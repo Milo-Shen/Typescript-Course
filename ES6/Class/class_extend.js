@@ -84,3 +84,13 @@ class Bar2 extends Foo2 {
   }
 }
 new Bar2();
+
+// Inheritance of static properties and static methods
+class A {
+  static hello() {
+    console.log('hello world');
+  }
+}
+class B extends A {}
+// The static properties and static methods of a parent class are also inherited by its subclasses.
+B.hello(); // hello world
