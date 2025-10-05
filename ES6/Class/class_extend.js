@@ -284,6 +284,8 @@ class Child extends Parent {
     super.myMethod(msg);
   }
 }
+// In the code above, when super is used in a static method, it refers to the parent class;
+// when used in an instance method, it refers to the parent class's prototype object.
 Child.myMethod(1); // static 1
 const child = new Child();
 child.myMethod(2); // instance 2
