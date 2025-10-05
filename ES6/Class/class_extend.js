@@ -178,3 +178,22 @@ new B4(); // My name is A4
 //     super();
 //   }
 // }
+
+// case 2:
+// When super is used as an object:
+//   1. In an instance method, it refers to the parent class's prototype object.
+//   2. In a static method, it refers to the parent class itself.
+class A6 {
+  p() {
+    return 'A6';
+  }
+}
+
+class B6 extends A6 {
+  constructor() {
+    super();
+    console.log(super.p()); // 'A6'
+    console.log(super.p === A6.prototype.p);
+  }
+}
+new B6();
