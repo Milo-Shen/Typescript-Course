@@ -225,3 +225,25 @@ class B8 extends A8 {
   }
 }
 new B8();
+
+// ES6 specifies that when a parent class's method is called via super in an instance method of a subclass,
+// the this inside the method refers to the current instance of the subclass.
+class A9 {
+  constructor() {
+    this.x = 'A9';
+  }
+  print() {
+    console.log(this.x);
+  }
+}
+class B9 extends A9 {
+  constructor() {
+    super();
+    this.x = 'B9';
+  }
+  m() {
+    super.print();
+  }
+}
+let b9 = new B9();
+b9.m(); // B9
