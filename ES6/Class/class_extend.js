@@ -332,3 +332,5 @@ const obj = {
   },
 };
 console.log('obj.toString(): ', obj.toString()); // MyObject: [object Object]
+
+// The prototype Property and __proto__ Property of a Class
