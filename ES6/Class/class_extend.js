@@ -382,3 +382,12 @@ console.log('A15.__proto__ === Function.prototype : ', A15.__proto__ === Functio
 console.log('A15.prototype.__proto__ === Object.prototype : ', A15.prototype.__proto__ === Object.prototype); // true
 
 //
+const p1 = new Point(2, 3);
+const p2 = new ColorPoint(2, 3, 'red');
+
+console.log('p1.__proto__ === Point.prototype : ', p1.__proto__ === Point.prototype);
+console.log('p2.__proto__ === ColorPoint.prototype : ', p2.__proto__ === ColorPoint.prototype);
+console.log('ColorPoint.__proto__ === Point : ', ColorPoint.__proto__ === Point);
+console.log('ColorPoint.prototype.__proto__ === Point.prototype : ', ColorPoint.prototype.__proto__ === Point.prototype);
+console.log('p2.__proto__ === p1.__proto__ : ', p2.__proto__ === p1.__proto__); // false
+console.log('p2.__proto__.__proto__ === p1.__proto__ : ', p2.__proto__.__proto__ === p1.__proto__); // true
