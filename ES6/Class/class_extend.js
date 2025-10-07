@@ -401,3 +401,37 @@ p2.__proto__.__proto__.printName = function () {
   console.log('Ha');
 };
 p1.printName(); // "Ha"
+
+// Implementation of the Mixin Pattern
+// A Mixin refers to the combination of multiple objects into a new object, where the new object has the interfaces of all its component members. Its simplest implementation is as follows.
+function mix(...mixins) {
+  class Mix {
+    constructor() {
+      for (let mixin of mixins) {
+        copyProperties(this, new mixin()); // 拷贝实例属性
+      }
+    }
+  }
+
+  for (let mixin of mixins) {
+    copyProperties(Mix, mixin); // 拷贝静态属性
+    copyProperties(Mix.prototype, mixin.prototype); // 拷贝原型属性
+  }
+
+  return Mix;
+}
+
+function copyProperties(target, source) {
+  for (let key of Reflect.ownKeys(source)) {
+    if (key !== 'constructor' && key !== 'prototype' && key !== 'name') {
+      let desc = Object.getOwnPropertyDescriptor(source, key);
+      Object.defineProperty(target, key, desc);
+    }
+  }
+}
+
+class Loggable {}
+class Serializable {}
+class DistributedEdit extends mix(Loggable, Serializable) {
+  // ...
+}
