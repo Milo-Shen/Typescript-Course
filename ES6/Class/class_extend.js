@@ -382,9 +382,12 @@ console.log('A15.__proto__ === Function.prototype : ', A15.__proto__ === Functio
 console.log('A15.prototype.__proto__ === Object.prototype : ', A15.prototype.__proto__ === Object.prototype); // true
 
 // The __proto__ property of an instance
+// The __proto__ property of the __proto__ property of a subclass instance points to the __proto__ property of a parent class instance.
+// In other words, the prototype of the subclass's prototype is the prototype of the parent class.
 const p1 = new Point(2, 3);
 const p2 = new ColorPoint(2, 3, 'red');
 
+// In the code above, ColorPoint inherits from Point, which results in the prototype of the former's prototype being the prototype of the latter.
 console.log('p1.__proto__ === Point.prototype : ', p1.__proto__ === Point.prototype);
 console.log('p2.__proto__ === ColorPoint.prototype : ', p2.__proto__ === ColorPoint.prototype);
 console.log('ColorPoint.__proto__ === Point : ', ColorPoint.__proto__ === Point);
