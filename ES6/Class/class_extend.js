@@ -345,3 +345,7 @@ console.log('B5.__proto__ === A5 : ', B5.__proto__ === A5); // true
 console.log('B5.prototype.__proto__ === A5.prototype : ', B5.prototype.__proto__ === A5.prototype); // true
 
 // This result occurs because class inheritance is implemented following the pattern below.
+class A13 {}
+class B13 {}
+Object.setPrototypeOf(B13.prototype, A13.prototype);
+Object.setPrototypeOf(B13, A13);
