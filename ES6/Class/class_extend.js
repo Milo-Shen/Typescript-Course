@@ -396,6 +396,7 @@ console.log('p2.__proto__ === p1.__proto__ : ', p2.__proto__ === p1.__proto__); 
 console.log('p2.__proto__.__proto__ === p1.__proto__ : ', p2.__proto__.__proto__ === p1.__proto__); // true
 
 // Therefore, by modifying the __proto__.__proto__ property of a subclass instance, the behavior of the parent class instance can be altered.
+// In the code above, a method is added to the Point class via p2 (an instance of ColorPoint), and as a result, this affects p1 (an instance of Point).
 p2.__proto__.__proto__.printName = function () {
   console.log('Ha');
 };
