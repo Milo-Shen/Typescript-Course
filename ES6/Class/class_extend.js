@@ -381,7 +381,7 @@ class A15 {}
 console.log('A15.__proto__ === Function.prototype : ', A15.__proto__ === Function.prototype); // true
 console.log('A15.prototype.__proto__ === Object.prototype : ', A15.prototype.__proto__ === Object.prototype); // true
 
-//
+// The __proto__ property of an instance
 const p1 = new Point(2, 3);
 const p2 = new ColorPoint(2, 3, 'red');
 
