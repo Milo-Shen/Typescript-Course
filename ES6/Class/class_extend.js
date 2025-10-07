@@ -351,3 +351,9 @@ Object.setPrototypeOf(B13.prototype, A13.prototype);
 Object.setPrototypeOf(B13, A13);
 console.log('B13.__proto__ === A13 : ', B13.__proto__ === A13); // true
 console.log('B13.prototype.__proto__ === A13.prototype : ', B13.prototype.__proto__ === A13.prototype); // true
+
+// The Implementation of the Object.setPrototypeOf Method
+Object.setPrototypeOf = function (obj, proto) {
+  obj.__proto__ = proto;
+  return obj;
+};
