@@ -360,3 +360,7 @@ Object.setPrototypeOf = function (obj, proto) {
   obj.__proto__ = proto;
   return obj;
 };
+
+// B.prototype = Object.create(A.prototype);
+// Equals to
+// B.prototype.__proto__ = A.prototype;
