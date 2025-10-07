@@ -373,3 +373,8 @@ class A14 extends Object {}
 // In this case, A is actually a copy of the constructor function Object, and the instances of A are the instances of Object.
 console.log('A14.__proto__ === Object : ', A14.__proto__ === Object); // true
 console.log('A14.prototype.__proto__ === Object.prototype : ', A14.prototype.__proto__ === Object.prototype);
+
+// In the second case, there is no inheritance at all.
+class A15 {}
+console.log('A15.__proto__ === Function.prototype : ', A15.__proto__ === Function.prototype); // true
+console.log('A15.prototype.__proto__ === Object.prototype : ', A15.prototype.__proto__ === Object.prototype); // true
