@@ -339,3 +339,7 @@ console.log('obj.toString(): ', obj.toString()); // MyObject: [object Object]
 
 // 1. The __proto__ property of a subclass represents the inheritance of the constructor and always points to the parent class.
 // 2. The __proto__ property of the subclass's prototype property represents the inheritance of methods and always points to the prototype property of the parent class.
+class A5 {}
+class B5 extends A5 {}
+console.log('B5.__proto__ === A5 : ', B5.__proto__ === A5); // true
+console.log('B5.prototype.__proto__ === A5.prototype : ', B5.prototype.__proto__ === A5.prototype); // true
