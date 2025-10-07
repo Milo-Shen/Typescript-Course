@@ -394,3 +394,9 @@ console.log('ColorPoint.__proto__ === Point : ', ColorPoint.__proto__ === Point)
 console.log('ColorPoint.prototype.__proto__ === Point.prototype : ', ColorPoint.prototype.__proto__ === Point.prototype);
 console.log('p2.__proto__ === p1.__proto__ : ', p2.__proto__ === p1.__proto__); // false
 console.log('p2.__proto__.__proto__ === p1.__proto__ : ', p2.__proto__.__proto__ === p1.__proto__); // true
+
+// Therefore, by modifying the __proto__.__proto__ property of a subclass instance, the behavior of the parent class instance can be altered.
+p2.__proto__.__proto__.printName = function () {
+  console.log('Ha');
+};
+p1.printName(); // "Ha"
