@@ -380,3 +380,5 @@ class A15 {}
 // However, when A is called, it returns an empty object (i.e., an instance of Object), so A.prototype.__proto__ points to the prototype property of the constructor function (Object).
 console.log('A15.__proto__ === Function.prototype : ', A15.__proto__ === Function.prototype); // true
 console.log('A15.prototype.__proto__ === Object.prototype : ', A15.prototype.__proto__ === Object.prototype); // true
+
+//
