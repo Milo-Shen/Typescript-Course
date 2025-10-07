@@ -370,5 +370,6 @@ class B14 extends A {}
 // In the code above, as long as A is a function that has a prototype property, it can be inherited by B.
 // Since all functions (except the Function.prototype function) have a prototype property, A can be any function.
 class A14 extends Object {}
+// In this case, A is actually a copy of the constructor function Object, and the instances of A are the instances of Object.
 console.log('A14.__proto__ === Object : ', A14.__proto__ === Object); // true
 console.log('A14.prototype.__proto__ === Object.prototype : ', A14.prototype.__proto__ === Object.prototype);
