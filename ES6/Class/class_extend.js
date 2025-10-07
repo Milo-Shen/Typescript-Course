@@ -364,3 +364,7 @@ Object.setPrototypeOf = function (obj, proto) {
 // B.prototype = Object.create(A.prototype);
 // Equals to
 // B.prototype.__proto__ = A.prototype;
+
+// The extends keyword can be followed by multiple types of values.
+class B14 extends A {}
+//
