@@ -336,3 +336,6 @@ console.log('obj.toString(): ', obj.toString()); // MyObject: [object Object]
 // The prototype Property and __proto__ Property of a Class
 // In the ES5 implementation of most browsers, every object has a __proto__ property, which points to the prototype property of the corresponding constructor function. As syntactic sugar for constructor functions, a Class has both a prototype property and a __proto__ property;
 // therefore, there are two inheritance chains simultaneously.
+
+// 1. The __proto__ property of a subclass represents the inheritance of the constructor and always points to the parent class.
+// 2. The __proto__ property of the subclass's prototype property represents the inheritance of methods and always points to the prototype property of the parent class.
