@@ -367,4 +367,8 @@ Object.setPrototypeOf = function (obj, proto) {
 
 // The extends keyword can be followed by multiple types of values.
 class B14 extends A {}
-//
+// In the code above, as long as A is a function that has a prototype property, it can be inherited by B.
+// Since all functions (except the Function.prototype function) have a prototype property, A can be any function.
+class A14 extends Object {}
+console.log('A14.__proto__ === Object : ', A14.__proto__ === Object); // true
+console.log('A14.prototype.__proto__ === Object.prototype : ', A14.prototype.__proto__ === Object.prototype);
