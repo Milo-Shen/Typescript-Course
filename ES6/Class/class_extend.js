@@ -349,6 +349,9 @@ class A13 {}
 class B13 {}
 Object.setPrototypeOf(B13.prototype, A13.prototype);
 Object.setPrototypeOf(B13, A13);
+// These two inheritance chains can be understood as follows:
+// As an object, the prototype (the __proto__ property) of the subclass (B) is the parent class (A);
+// As a constructor function, the prototype object (the prototype property) of the subclass (B) is an instance of the prototype object (the prototype property) of the parent class (A).
 console.log('B13.__proto__ === A13 : ', B13.__proto__ === A13); // true
 console.log('B13.prototype.__proto__ === A13.prototype : ', B13.prototype.__proto__ === A13.prototype); // true
 
