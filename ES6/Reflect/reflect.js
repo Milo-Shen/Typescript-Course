@@ -132,3 +132,17 @@ Reflect.set(myObject2, 'foo', 2);
 console.log(myObject2.foo); // 2
 Reflect.set(myObject2, 'bar', 3);
 console.log(myObject2.foo); // 3
+
+// 如果 name 属性设置了赋值函数，则赋值函数的 this 绑定 receiver。
+const myObject3 = {
+  foo: 4,
+  set bar(value) {
+    return (this.foo = value);
+  },
+};
+const myReceiverObject3 = {
+  foo: 0,
+};
+Reflect.set(myObject3, 'bar', 1, myReceiverObject3);
+console.log('myObject3.foo : ', myObject3.foo); // 4
+console.log('myReceiverObject3.foo : ', myReceiverObject3.foo); // 1
