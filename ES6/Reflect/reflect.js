@@ -360,3 +360,14 @@ Object.preventExtensions(1); // 1
 
 // Reflect.ownKeys (target)
 // Reflect.ownKeys 方法用于返回对象的所有属性，基本等同于 Object.getOwnPropertyNames 与 Object.getOwnPropertySymbols 之和。
+const myObject8 = {
+  foo: 1,
+  bar: 2,
+  [Symbol.for('baz')]: 3,
+  [Symbol.for('bing')]: 4,
+};
+// 旧写法
+Object.getOwnPropertyNames(myObject8); // ['foo', 'bar']
+Object.getOwnPropertySymbols(myObject8); // [Symbol(baz), Symbol(bing)]
+// 新写法
+console.log('Reflect.ownKeys(myObject8) : ', Reflect.ownKeys(myObject8)); // ['foo', 'bar', Symbol(baz), Symbol(bing)]
