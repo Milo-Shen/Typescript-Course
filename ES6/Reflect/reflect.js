@@ -218,6 +218,7 @@ console.log('myObj.foo', myObj.foo); // undefined
 
 // Reflect.construct(target, args)
 // Reflect.construct 方法等同于 new target(...args)，这提供了一种不使用 new，来调用构造函数的方法。
+// 如果Reflect.construct()方法的第一个参数不是函数，会报错。
 function Greeting(name) {
   this.name = name;
 }
