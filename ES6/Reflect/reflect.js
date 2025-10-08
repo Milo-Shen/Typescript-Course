@@ -114,3 +114,7 @@ const myReceiverObject1 = {
 console.log("Reflect.get(myObject, 'baz') : ", Reflect.get(myObject, 'baz'));
 console.log("Reflect.get(myObject, 'foo', myReceiverObject1) : ", Reflect.get(myObject, 'foo', myReceiverObject1)); // 8
 console.log("Reflect.get(myObject, 'baz', myReceiverObject1) : ", Reflect.get(myObject, 'baz', myReceiverObject1)); // 8
+
+// 如果第一个参数不是对象，Reflect.get 方法会报错
+// Reflect.get(1, 'foo'); // 报错: TypeError: Reflect.get called on non-object
+// Reflect.get(false, 'foo'); // 报错: TypeError: Reflect.get called on non-object
