@@ -312,3 +312,6 @@ const p3 = new Proxy(
 );
 p3.foo = 'bar p3'; // {value: "bar", writable: true, enumerable: true, configurable: true}
 console.log('p3.foo: ', p3.foo); // "bar"
+
+// Reflect.getOwnPropertyDescriptor(target, propertyKey)
+// Reflect.getOwnPropertyDescriptor 基本等同于 Object.getOwnPropertyDescriptor，用于得到指定属性的描述对象，将来会替代掉后者。
