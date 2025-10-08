@@ -96,3 +96,20 @@ const myObject = {
 Reflect.get(myObject, 'foo'); // 1
 Reflect.get(myObject, 'bar'); // 2
 Reflect.get(myObject, 'baz'); // 3
+
+// 如果name属性部署了读取函数（getter），则读取函数的 this 绑定 receiver。
+const myObject1 = {
+  foo: 1,
+  bar: 2,
+  get baz() {
+    return this.foo + this.bar;
+  },
+};
+
+const myReceiverObject1 = {
+  foo: 4,
+  bar: 4,
+};
+
+console.log("Reflect.get(myObject, 'baz') : ", Reflect.get(myObject, 'baz'));
+console.log("Reflect.get(myObject, 'baz', myReceiverObject1) : ", Reflect.get(myObject, 'baz', myReceiverObject1)); // 8
