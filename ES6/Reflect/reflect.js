@@ -254,3 +254,7 @@ console.log('myObj1.length', myObj1.length); // 0
 // 如果无法设置目标对象的原型（比如，目标对象禁止扩展），Reflect.setPrototypeOf 方法返回 false。
 console.log(Reflect.setPrototypeOf({}, null)); // true
 console.log(Reflect.setPrototypeOf(Object.freeze({}), null)); // false
+
+// 如果第一个参数不是对象，Object.setPrototypeOf 会返回第一个参数本身，而 Reflect.setPrototypeOf 会报错。
+console.log('Object.setPrototypeOf(1, {})', Object.setPrototypeOf(1, {})); // 1
+// Reflect.setPrototypeOf(1, {}); // TypeError: Reflect.setPrototypeOf called on non-object
