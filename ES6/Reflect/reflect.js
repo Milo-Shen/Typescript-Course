@@ -82,3 +82,17 @@ Reflect.apply(Math.floor, undefined, [1.75]); // 1
 // - Reflect.getPrototypeOf(target)
 // - Reflect.setPrototypeOf(target, prototype)
 // 上面这些方法的作用，大部分与Object对象的同名方法的作用都是相同的，而且它与Proxy对象的方法是一一对应的。下面是对它们的解释。
+
+// Reflect.get(target, name, receiver)
+// Reflect.get方法查找并返回target对象的name属性，如果没有该属性，则返回undefined。
+const myObject = {
+  foo: 1,
+  bar: 2,
+  get baz() {
+    return this.foo + this.bar;
+  },
+};
+
+Reflect.get(myObject, 'foo'); // 1
+Reflect.get(myObject, 'bar'); // 2
+Reflect.get(myObject, 'baz'); // 3
