@@ -303,6 +303,10 @@ const p3 = new Proxy(
     set(target, key, value) {
       Reflect.set(target, key, value);
     },
+    defineProperty(target, prop, descriptor) {
+      console.log(descriptor);
+      return Reflect.defineProperty(target, prop, descriptor);
+    },
   },
 );
 p3.foo = 'bar p3'; // {value: "bar", writable: true, enumerable: true, configurable: true}
