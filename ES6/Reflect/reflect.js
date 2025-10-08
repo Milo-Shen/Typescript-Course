@@ -239,3 +239,12 @@ console.log(Reflect.getPrototypeOf(myObj2) === FancyThing.prototype);
 // 如果参数不是对象，Object.getPrototypeOf 会将这个参数转为对象，然后再运行，而 Reflect.getPrototypeOf 会报错。
 console.log(Object.getPrototypeOf(1)); // Number {[[PrimitiveValue]]: 0}
 // Reflect.getPrototypeOf(1); // 报错: TypeError: Reflect.getPrototypeOf called on non-object
+
+// Reflect.setPrototypeOf(obj, newProto)
+// Reflect.setPrototypeOf 方法用于设置目标对象的原型（prototype），对应 Object.setPrototypeOf(obj, newProto) 方法。它返回一个布尔值，表示是否设置成功。
+const myObj1 = {};
+// 旧写法
+Object.setPrototypeOf(myObj1, Array.prototype);
+// 新写法
+Reflect.setPrototypeOf(myObj1, Array.prototype);
+console.log('myObj1.length', myObj1.length); // 0
