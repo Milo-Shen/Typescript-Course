@@ -235,3 +235,7 @@ const myObj2 = new FancyThing();
 console.log(Object.getPrototypeOf(myObj2) === FancyThing.prototype);
 // 新写法
 console.log(Reflect.getPrototypeOf(myObj2) === FancyThing.prototype);
+// Reflect.getPrototypeOf 和 Object.getPrototypeOf 的一个区别是，
+// 如果参数不是对象，Object.getPrototypeOf 会将这个参数转为对象，然后再运行，而 Reflect.getPrototypeOf 会报错。
+console.log(Object.getPrototypeOf(1)); // Number {[[PrimitiveValue]]: 0}
+// Reflect.getPrototypeOf(1); // 报错: TypeError: Reflect.getPrototypeOf called on non-object
