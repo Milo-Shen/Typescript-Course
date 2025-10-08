@@ -294,6 +294,7 @@ const p2 = new Proxy(
     },
   },
 );
+// 上面代码中，Proxy.defineProperty 对属性赋值设置了拦截，然后使用 Reflect.defineProperty 完成了赋值。
 p2.foo = 'bar'; // {value: "bar", writable: true, enumerable: true, configurable: true}
 console.log('p2.foo: ', p2.foo); // "bar"
 
