@@ -226,3 +226,12 @@ function Greeting(name) {
 let instance = new Greeting('张三');
 // Reflect.construct 的写法
 instance = Reflect.construct(Greeting, ['张三']);
+
+// Reflect.getPrototypeOf(obj)
+// Reflect.getPrototypeOf 方法用于读取对象的 __proto__ 属性，对应 Object.getPrototypeOf(obj)。
+class FancyThing {}
+const myObj2 = new FancyThing();
+// 旧写法
+console.log(Object.getPrototypeOf(myObj2) === FancyThing.prototype);
+// 新写法
+console.log(Reflect.getPrototypeOf(myObj2) === FancyThing.prototype);
