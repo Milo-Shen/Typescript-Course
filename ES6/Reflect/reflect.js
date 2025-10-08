@@ -285,3 +285,14 @@ Reflect.defineProperty(MyDate, 'now', {
   value: () => Date.now(),
 });
 // 如果 Reflect.defineProperty 的第一个参数不是对象，就会抛出错误，比如 Reflect.defineProperty(1, 'foo')。
+const p2 = new Proxy(
+  {},
+  {
+    defineProperty(target, prop, descriptor) {
+      console.log(descriptor);
+      return Reflect.defineProperty(target, prop, descriptor);
+    },
+  },
+);
+p2.foo = 'bar'; // {value: "bar", writable: true, enumerable: true, configurable: true}
+console.log('p2.foo', p2.foo); // "bar"
