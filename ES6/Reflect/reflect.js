@@ -344,3 +344,8 @@ console.log('Reflect.isExtensible(myObject6) : ', Reflect.isExtensible(myObject6
 
 // Reflect.preventExtensions(target)
 // Reflect.preventExtensions 对应 Object.preventExtensions 方法，用于让一个对象变为不可扩展。它返回一个布尔值，表示是否操作成功。
+const myObject7 = {};
+// 旧写法
+Object.preventExtensions(myObject7); // Object {}
+// 新写法
+Reflect.preventExtensions(myObject7); // true
