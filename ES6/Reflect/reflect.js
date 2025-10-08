@@ -371,3 +371,4 @@ Object.getOwnPropertyNames(myObject8); // ['foo', 'bar']
 Object.getOwnPropertySymbols(myObject8); // [Symbol(baz), Symbol(bing)]
 // 新写法
 console.log('Reflect.ownKeys(myObject8) : ', Reflect.ownKeys(myObject8)); // ['foo', 'bar', Symbol(baz), Symbol(bing)]
+// 如果 Reflect.ownKeys() 方法的第一个参数不是对象，会报错。
