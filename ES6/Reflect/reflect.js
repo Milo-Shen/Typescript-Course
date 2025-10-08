@@ -315,3 +315,14 @@ console.log('p3.foo: ', p3.foo); // "bar"
 
 // Reflect.getOwnPropertyDescriptor(target, propertyKey)
 // Reflect.getOwnPropertyDescriptor 基本等同于 Object.getOwnPropertyDescriptor，用于得到指定属性的描述对象，将来会替代掉后者。
+const myObject5 = {};
+Object.defineProperty(myObject5, 'hidden', {
+  value: true,
+  enumerable: false,
+});
+// 旧写法
+const theDescriptor1 = Object.getOwnPropertyDescriptor(myObject5, 'hidden');
+console.log('theDescriptor1: ', theDescriptor1);
+// 新写法
+const theDescriptor2 = Reflect.getOwnPropertyDescriptor(myObject5, 'hidden');
+console.log('theDescriptor2: ', theDescriptor2);
