@@ -357,3 +357,6 @@ Object.preventExtensions(1); // 报错
 Object.preventExtensions(1); // 1
 // 新写法
 // Reflect.preventExtensions(1); // 报错: TypeError: Reflect.preventExtensions called on non-object
+
+// Reflect.ownKeys (target)
+// Reflect.ownKeys 方法用于返回对象的所有属性，基本等同于 Object.getOwnPropertyNames 与 Object.getOwnPropertySymbols 之和。
