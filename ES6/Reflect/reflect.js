@@ -187,3 +187,7 @@ const handler1 = {
 const obj2 = new Proxy(p1, handler1);
 obj2.a = 'B';
 console.log('obj2.a : ', obj2.a);
+
+// 如果第一个参数不是对象，Reflect.set会报错。
+// Reflect.set(1, 'foo', {}); // 报错: TypeError: Reflect.set called on non-object
+// Reflect.set(false, 'foo', {}); // 报错: TypeError: Reflect.set called on non-object
