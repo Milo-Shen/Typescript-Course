@@ -57,3 +57,11 @@ const loggedObj = new Proxy(obj, {
     return Reflect.has(target, name);
   },
 });
+
+// 上面代码中，每一个Proxy对象的拦截操作（get、delete、has），内部都调用对应的Reflect方法，保证原生行为能够正常执行。添加的工作，就是将每一个操作输出一行日志。
+// 有了Reflect对象以后，很多操作会更易读。
+
+// 老写法
+Function.prototype.apply.call(Math.floor, undefined, [1.75]); // 1
+// 新写法
+Reflect.apply(Math.floor, undefined, [1.75]); // 1
