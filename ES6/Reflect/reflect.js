@@ -340,3 +340,4 @@ const myObject6 = {};
 console.log('Object.isExtensible(myObject6) : ', Object.isExtensible(myObject6)); // true
 // 新写法
 console.log('Reflect.isExtensible(myObject6) : ', Reflect.isExtensible(myObject6)); // true
+// 如果参数不是对象，Object.isExtensible 会返回false，因为非对象本来就是不可扩展的，而 Reflect.isExtensible 会报错。
