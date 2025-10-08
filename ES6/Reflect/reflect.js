@@ -247,4 +247,10 @@ const myObj1 = {};
 Object.setPrototypeOf(myObj1, Array.prototype);
 // 新写法
 Reflect.setPrototypeOf(myObj1, Array.prototype);
+// 相当于
+myObj1.__proto__ = Array.prototype;
 console.log('myObj1.length', myObj1.length); // 0
+
+// 如果无法设置目标对象的原型（比如，目标对象禁止扩展），Reflect.setPrototypeOf 方法返回 false。
+console.log(Reflect.setPrototypeOf({}, null)); // true
+console.log(Reflect.setPrototypeOf(Object.freeze({}), null)); // false
