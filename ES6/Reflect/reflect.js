@@ -22,3 +22,5 @@ if (Reflect.defineProperty(target, property, attributes)) {
   // failure
 }
 console.log('target.test : ', target.test);
+
+// (3） 让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
