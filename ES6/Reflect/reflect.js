@@ -349,3 +349,11 @@ const myObject7 = {};
 Object.preventExtensions(myObject7); // Object {}
 // 新写法
 Reflect.preventExtensions(myObject7); // true
+
+// 如果参数不是对象，Object.preventExtensions 在 ES5 环境报错，在 ES6 环境返回传入的参数，而 Reflect.preventExtensions 会报错。
+// ES5 环境
+Object.preventExtensions(1); // 报错
+// ES6 环境
+Object.preventExtensions(1); // 1
+// 新写法
+// Reflect.preventExtensions(1); // 报错: TypeError: Reflect.preventExtensions called on non-object
