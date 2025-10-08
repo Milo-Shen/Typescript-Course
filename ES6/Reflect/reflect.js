@@ -204,3 +204,6 @@ Reflect.has(myObject4, 'foo'); // true
 
 // 如果 Reflect.has() 方法的第一个参数不是对象，会报错。
 // Reflect.has(true, 'foo'); // TypeError: Reflect.has called on non-object
+
+// Reflect.deleteProperty(obj, name)
+// Reflect.deleteProperty 方法等同于 delete obj[name]，用于删除对象的属性。
