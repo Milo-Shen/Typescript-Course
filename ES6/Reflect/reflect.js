@@ -84,7 +84,7 @@ Reflect.apply(Math.floor, undefined, [1.75]); // 1
 // 上面这些方法的作用，大部分与Object对象的同名方法的作用都是相同的，而且它与Proxy对象的方法是一一对应的。下面是对它们的解释。
 
 // Reflect.get(target, name, receiver)
-// Reflect.get方法查找并返回target对象的name属性，如果没有该属性，则返回undefined。
+// Reflect.get 方法查找并返回 target 对象的 name 属性，如果没有该属性，则返回 undefined。
 const myObject = {
   foo: 1,
   bar: 2,
