@@ -191,3 +191,13 @@ console.log('obj2.a : ', obj2.a);
 // 如果第一个参数不是对象，Reflect.set会报错。
 // Reflect.set(1, 'foo', {}); // 报错: TypeError: Reflect.set called on non-object
 // Reflect.set(false, 'foo', {}); // 报错: TypeError: Reflect.set called on non-object
+
+// Reflect.has(obj, name)
+// Reflect.has 方法对应 name in obj 里面的 in 运算符。
+const myObject4 = {
+  foo: 1,
+};
+// 旧写法
+console.log('foo' in myObject4); // true
+// 新写法
+Reflect.has(myObject4, 'foo'); // true
