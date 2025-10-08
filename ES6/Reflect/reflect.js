@@ -284,3 +284,4 @@ Object.defineProperty(MyDate, 'now', {
 Reflect.defineProperty(MyDate, 'now', {
   value: () => Date.now(),
 });
+// 如果 Reflect.defineProperty 的第一个参数不是对象，就会抛出错误，比如 Reflect.defineProperty(1, 'foo')。
