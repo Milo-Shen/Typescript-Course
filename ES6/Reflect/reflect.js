@@ -326,3 +326,9 @@ console.log('theDescriptor1: ', theDescriptor1);
 // 新写法
 const theDescriptor2 = Reflect.getOwnPropertyDescriptor(myObject5, 'hidden');
 console.log('theDescriptor2: ', theDescriptor2);
+
+// Reflect.getOwnPropertyDescriptor 和 Object.getOwnPropertyDescriptor 的一个区别是，
+// 如果第一个参数不是对象，Object.getOwnPropertyDescriptor(1, 'foo')不报错，返回undefined，
+// 而 Reflect.getOwnPropertyDescriptor(1, 'foo') 会抛出错误，表示参数非法。
+console.log("Object.getOwnPropertyDescriptor(1, 'foo') : ", Object.getOwnPropertyDescriptor(1, 'foo'));
+// Reflect.getOwnPropertyDescriptor(1, 'foo'); // TypeError: Reflect.getOwnPropertyDescriptor called on non-object
