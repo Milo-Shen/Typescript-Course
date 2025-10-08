@@ -112,4 +112,5 @@ const myReceiverObject1 = {
 };
 
 console.log("Reflect.get(myObject, 'baz') : ", Reflect.get(myObject, 'baz'));
+console.log("Reflect.get(myObject, 'foo', myReceiverObject1) : ", Reflect.get(myObject, 'foo', myReceiverObject1)); // 8
 console.log("Reflect.get(myObject, 'baz', myReceiverObject1) : ", Reflect.get(myObject, 'baz', myReceiverObject1)); // 8
