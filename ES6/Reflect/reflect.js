@@ -118,3 +118,17 @@ console.log("Reflect.get(myObject, 'baz', myReceiverObject1) : ", Reflect.get(my
 // 如果第一个参数不是对象，Reflect.get 方法会报错
 // Reflect.get(1, 'foo'); // 报错: TypeError: Reflect.get called on non-object
 // Reflect.get(false, 'foo'); // 报错: TypeError: Reflect.get called on non-object
+
+// Reflect.set(target, name, value, receiver)
+// Reflect.set 方法设置 target 对象的 name 属性等于 value。
+const myObject2 = {
+  foo: 1,
+  set bar(value) {
+    return (this.foo = value);
+  },
+};
+console.log(myObject2.foo); // 1
+Reflect.set(myObject2, 'foo', 2);
+console.log(myObject2.foo); // 2
+Reflect.set(myObject2, 'bar', 3);
+console.log(myObject2.foo); // 3
