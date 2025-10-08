@@ -271,3 +271,16 @@ const type = Object.prototype.toString.call(youngest);
 const youngest1 = Reflect.apply(Math.min, Math, ages);
 const oldest1 = Reflect.apply(Math.max, Math, ages);
 const type1 = Reflect.apply(Object.prototype.toString, youngest, []);
+
+// Reflect.defineProperty(target, propertyKey, attributes)
+// Reflect.defineProperty 方法基本等同于 Object.defineProperty，用来为对象定义属性。
+// 未来，后者会被逐渐废除，请从现在开始就使用 Reflect.defineProperty 代替它。
+function MyDate() {}
+// 旧写法
+Object.defineProperty(MyDate, 'now', {
+  value: () => Date.now(),
+});
+// 新写法
+Reflect.defineProperty(MyDate, 'now', {
+  value: () => Date.now(),
+});
