@@ -341,3 +341,6 @@ console.log('Object.isExtensible(myObject6) : ', Object.isExtensible(myObject6))
 // 新写法
 console.log('Reflect.isExtensible(myObject6) : ', Reflect.isExtensible(myObject6)); // true
 // 如果参数不是对象，Object.isExtensible 会返回false，因为非对象本来就是不可扩展的，而 Reflect.isExtensible 会报错。
+
+// Reflect.preventExtensions(target)
+// Reflect.preventExtensions 对应 Object.preventExtensions 方法，用于让一个对象变为不可扩展。它返回一个布尔值，表示是否操作成功。
