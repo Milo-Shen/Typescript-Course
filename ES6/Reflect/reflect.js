@@ -215,3 +215,6 @@ delete myObj.foo;
 // 新写法
 Reflect.deleteProperty(myObj, 'foo');
 console.log('myObj.foo', myObj.foo); // undefined
+
+// Reflect.construct(target, args)
+// Reflect.construct 方法等同于 new target(...args)，这提供了一种不使用 new，来调用构造函数的方法。
