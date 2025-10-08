@@ -295,4 +295,15 @@ const p2 = new Proxy(
   },
 );
 p2.foo = 'bar'; // {value: "bar", writable: true, enumerable: true, configurable: true}
-console.log('p2.foo', p2.foo); // "bar"
+console.log('p2.foo: ', p2.foo); // "bar"
+
+const p3 = new Proxy(
+  {},
+  {
+    set(target, key, value) {
+      Reflect.set(target, key, value);
+    },
+  },
+);
+p3.foo = 'bar p3'; // {value: "bar", writable: true, enumerable: true, configurable: true}
+console.log('p3.foo: ', p3.foo); // "bar"
