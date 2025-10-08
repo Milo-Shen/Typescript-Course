@@ -162,5 +162,9 @@ const handler = {
     Reflect.defineProperty(target, key, attribute);
   },
 };
+// 上面代码中，Proxy.set 拦截里面使用了 Reflect.set，而且传入了receiver，导致触发 Proxy.defineProperty 拦截。
+// 这是因为 Proxy.set 的 receiver 参数总是指向当前的 Proxy实例（ 即上例的 obj ），而 Reflect.set 一旦传入 receiver，就会将属性赋值到 receiver上面（ 即 obj ），导致触发 defineProperty 拦截。
+// 如果 Reflect.set 没有传入 receiver, 那么就不会触发 defineProperty 拦截。
 const obj1 = new Proxy(p, handler);
 obj1.a = 'A';
+console.log('obj1.a : ', obj1.a);
