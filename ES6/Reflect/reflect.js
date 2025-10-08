@@ -332,3 +332,5 @@ console.log('theDescriptor2: ', theDescriptor2);
 // 而 Reflect.getOwnPropertyDescriptor(1, 'foo') 会抛出错误，表示参数非法。
 console.log("Object.getOwnPropertyDescriptor(1, 'foo') : ", Object.getOwnPropertyDescriptor(1, 'foo'));
 // Reflect.getOwnPropertyDescriptor(1, 'foo'); // TypeError: Reflect.getOwnPropertyDescriptor called on non-object
+
+// TypeError: Reflect.getOwnPropertyDescriptor called on non-object
