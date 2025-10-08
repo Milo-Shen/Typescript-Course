@@ -207,3 +207,9 @@ Reflect.has(myObject4, 'foo'); // true
 
 // Reflect.deleteProperty(obj, name)
 // Reflect.deleteProperty 方法等同于 delete obj[name]，用于删除对象的属性。
+const myObj = { foo: 'bar' };
+// 旧写法
+delete myObj.foo;
+// 新写法
+Reflect.deleteProperty(myObj, 'foo');
+console.log('myObj.foo', myObj.foo); // undefined
