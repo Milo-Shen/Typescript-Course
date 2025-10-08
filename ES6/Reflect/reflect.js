@@ -258,3 +258,7 @@ console.log(Reflect.setPrototypeOf(Object.freeze({}), null)); // false
 // 如果第一个参数不是对象，Object.setPrototypeOf 会返回第一个参数本身，而 Reflect.setPrototypeOf 会报错。
 console.log('Object.setPrototypeOf(1, {})', Object.setPrototypeOf(1, {})); // 1
 // Reflect.setPrototypeOf(1, {}); // TypeError: Reflect.setPrototypeOf called on non-object
+
+// Reflect.apply(func, thisArg, args)
+// Reflect.apply 方法等同于 Function.prototype.apply.call(func, thisArg, args)，用于绑定 this 对象后执行给定函数。
+// 一般来说，如果要绑定一个函数的 this 对象，可以这样写 fn.apply(obj, args)，但是如果函数定义了自己的 apply 方法，就只能写成 Function.prototype.apply.call(fn, obj, args)，采用 Reflect 对象可以简化这种操作。
