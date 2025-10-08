@@ -334,3 +334,9 @@ console.log("Object.getOwnPropertyDescriptor(1, 'foo') : ", Object.getOwnPropert
 // Reflect.getOwnPropertyDescriptor(1, 'foo'); // TypeError: Reflect.getOwnPropertyDescriptor called on non-object
 
 // TypeError: Reflect.getOwnPropertyDescriptor called on non-object
+// Reflect.isExtensible 方法对应 Object.isExtensible，返回一个布尔值，表示当前对象是否可扩展。
+const myObject6 = {};
+// 旧写法
+console.log('Object.isExtensible(myObject6) : ', Object.isExtensible(myObject6)); // true
+// 新写法
+console.log('Reflect.isExtensible(myObject6) : ', Reflect.isExtensible(myObject6)); // true
