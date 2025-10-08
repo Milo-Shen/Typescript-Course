@@ -146,3 +146,21 @@ const myReceiverObject3 = {
 Reflect.set(myObject3, 'bar', 1, myReceiverObject3);
 console.log('myObject3.foo : ', myObject3.foo); // 4
 console.log('myReceiverObject3.foo : ', myReceiverObject3.foo); // 1
+
+// 注意，如果 Proxy 对象和 Reflect 对象联合使用，前者拦截赋值操作，后者完成赋值的默认行为，而且传入了 receiver，那么 Reflect.set 会触发 Proxy.defineProperty 拦截。
+const p = {
+  a: 'a',
+};
+// todo: deep learning on receiver
+const handler = {
+  set(target, key, value, receiver) {
+    console.log('set');
+    Reflect.set(target, key, value, receiver);
+  },
+  defineProperty(target, key, attribute) {
+    console.log('defineProperty');
+    Reflect.defineProperty(target, key, attribute);
+  },
+};
+const obj1 = new Proxy(p, handler);
+obj1.a = 'A';
