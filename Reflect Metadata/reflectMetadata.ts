@@ -10,3 +10,5 @@ class MyClass {
     console.log('executing my method');
   }
 }
+
+const instance = Reflect.construct(MyClass, ['MyClassParam']);
