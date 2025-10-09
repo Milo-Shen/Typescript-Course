@@ -2,7 +2,9 @@
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
     "preserveConstEnums": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
   },
   "include": [
     "src/**/*"
