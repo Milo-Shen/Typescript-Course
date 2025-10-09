@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Typescript-Course",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
     "@tsconfig/recommended": "^1.0.1",
