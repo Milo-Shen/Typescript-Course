@@ -24,7 +24,7 @@ console.log('key1 metadata value on instance: ', metadataValue);
 metadataValue = Reflect.getOwnMetadata('key1', instance, 'myProperty');
 console.log('key1 metadata value on instance: ', metadataValue);
 
-//
+// metadata can be added to a non-existent property
 Reflect.defineMetadata('key1', 'value1', instance, 'non-existent-property');
 hasMetadata = Reflect.hasMetadata('key1', instance, 'non-existent-property');
 console.log('non-existent-property on instance has Metadata key1: ', hasMetadata);
