@@ -5,4 +5,8 @@ class MyClass {
   constructor(myProperty: string) {
     this.myProperty = myProperty;
   }
+
+  myMethod() {
+    console.log('executing my method');
+  }
 }
