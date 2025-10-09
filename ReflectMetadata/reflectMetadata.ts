@@ -37,3 +37,5 @@ const metadataValue2 = Reflect.getMetadata('customKey', instance, 'myMethod');
 console.log('[Reflect.getMetadata] metadataValue2: ', metadataValue2);
 const metadataValue3 = Reflect.getMetadata('customKey', Reflect.getPrototypeOf(instance)!, 'myMethod');
 console.log('[Reflect.getMetadata] metadataValue3: ', metadataValue3);
+const metadataValue4 = Reflect.getMetadata('customKey', MyClass.prototype, 'myMethod');
+console.log('[Reflect.getMetadata] metadataValue4: ', metadataValue4);
