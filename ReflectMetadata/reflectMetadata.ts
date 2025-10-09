@@ -44,5 +44,5 @@ console.log('[Reflect.getMetadata] metadataValue4: ', metadataValue4);
 Reflect.deleteMetadata('key1', instance, 'myProperty');
 hasMetadata = Reflect.hasMetadata('key1', instance, 'myProperty');
 metadataValue = Reflect.getMetadata('key1', instance, 'myProperty');
-console.log('[Reflect.hasMetadata] after delete: ', metadataValue);
+console.log('[Reflect.hasMetadata] after delete: ', hasMetadata);
 console.log('[Reflect.getMetadata] after delete: ', metadataValue);
