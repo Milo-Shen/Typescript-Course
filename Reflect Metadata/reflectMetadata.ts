@@ -6,6 +6,7 @@ class MyClass {
     this.myProperty = myProperty;
   }
 
+  @Reflect.metadata('customKey', 'customValue')
   myMethod() {
     console.log('executing my method');
   }
@@ -28,3 +29,7 @@ console.log('key1 metadata value on instance: ', metadataValue);
 Reflect.defineMetadata('key1', 'value1', instance, 'non-existent-property');
 hasMetadata = Reflect.hasMetadata('key1', instance, 'non-existent-property');
 console.log('non-existent-property on instance has Metadata key1: ', hasMetadata);
+
+// get own metadata: Reflect.getOwnMetadata
+const metadataValue1 = Reflect.getOwnMetadata('key1', instance, 'myMethod');
+console.log('metadataValue1: ', metadataValue1);
