@@ -39,3 +39,10 @@ const metadataValue3 = Reflect.getMetadata('customKey', Reflect.getPrototypeOf(i
 console.log('[Reflect.getMetadata] metadataValue3: ', metadataValue3);
 const metadataValue4 = Reflect.getMetadata('customKey', MyClass.prototype, 'myMethod');
 console.log('[Reflect.getMetadata] metadataValue4: ', metadataValue4);
+
+// delete metadata
+Reflect.deleteMetadata('key1', instance, 'myProperty');
+hasMetadata = Reflect.hasMetadata('key1', instance, 'myProperty');
+metadataValue = Reflect.getMetadata('key1', instance, 'myProperty');
+console.log('[Reflect.hasMetadata] after delete: ', metadataValue);
+console.log('[Reflect.getMetadata] after delete: ', metadataValue);
