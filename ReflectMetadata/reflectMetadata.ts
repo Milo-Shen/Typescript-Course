@@ -31,7 +31,9 @@ hasMetadata = Reflect.hasMetadata('key1', instance, 'non-existent-property');
 console.log('non-existent-property on instance has Metadata key1: ', hasMetadata);
 
 // get own metadata: Reflect.getOwnMetadata
-const metadataValue1 = Reflect.getOwnMetadata('key1', instance, 'myMethod');
+const metadataValue1 = Reflect.getOwnMetadata('customKey', instance, 'myMethod');
 console.log('[Reflect.getOwnMetadata] metadataValue1: ', metadataValue1);
-const metadataValue2 = Reflect.getMetadata('key1', instance, 'myMethod');
+const metadataValue2 = Reflect.getMetadata('customKey', instance, 'myMethod');
 console.log('[Reflect.getMetadata] metadataValue2: ', metadataValue2);
+const metadataValue3 = Reflect.getMetadata('customKey', Reflect.getPrototypeOf(instance)!, 'myMethod');
+console.log('[Reflect.getMetadata] metadataValue3: ', metadataValue3);
