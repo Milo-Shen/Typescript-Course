@@ -46,3 +46,14 @@
 // 上面示例中，A 是类装饰器，B 是属性装饰器，C 是方法装饰器，D 是参数装饰器，E 是存取器装饰器。
 // 注意，构造方法没有方法装饰器，只有参数装饰器。类装饰器其实就是在装饰构造方法。
 // 另外，装饰器只能用于类，要么应用于类的整体，要么应用于类的内部成员，不能用于独立的函数。
+
+// 下面示例中，装饰器用于一个普通函数，这是无效的，结果报错。
+// function Decorator() {
+//   console.log('In Decorator');
+// }
+//
+// //  ERROR: Decorators are not valid here
+// @Decorator // 报错
+// function decorated() {
+//   console.log('in decorated');
+// }
