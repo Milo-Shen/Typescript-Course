@@ -161,3 +161,7 @@ class Foo1 {
 // // 等同于
 // class A {}
 // A = decorator(A) || A;
+
+// 4. 方法装饰器
+// 方法装饰器用来装饰类的方法，它的类型定义如下。
+type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
