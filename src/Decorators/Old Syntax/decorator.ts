@@ -212,3 +212,25 @@ class Greeter {
 console.log("Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet') : ", Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet'));
 
 // 下面再看一个例子。
+function logger(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  const original = descriptor.value;
+
+  descriptor.value = function (...args: any[]) {
+    console.log('params: ', ...args);
+    const result = original.call(this, ...args);
+    console.log('result: ', result);
+    return result;
+  };
+}
+
+// 下面示例中，方法装饰器 @logger 用来装饰 add() 方法，它的作用是让该方法输出日志。每当 add() 调用一次，控制台就会打印出参数和运行结果。
+class C {
+  @logger
+  add(x: number, y: number) {
+    return x + y;
+  }
+}
+
+// params:  1 2
+// result:  3
+new C().add(1, 2);
