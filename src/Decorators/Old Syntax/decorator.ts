@@ -99,6 +99,7 @@ function sealed(constructor: Function) {
 }
 
 // 如果除了构造方法，类装饰器还需要其他参数，可以采取“工厂模式”，即把装饰器写在一个函数里面，该函数可以接受其他参数，执行后返回装饰器。但是，这样就需要调用装饰器的时候，先执行一次工厂函数。
+// 上面示例中，函数 factory() 的返回值才是装饰器，所以加载装饰器的时候，要先执行一次 @factory('log something')，才能得到装饰器。这样做的好处是，可以加入额外的参数，本例是参数 info。
 function factory(info: string) {
   console.log('received: ', info);
   return function (target: any) {
