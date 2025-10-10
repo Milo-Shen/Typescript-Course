@@ -110,3 +110,11 @@ function factory(info: string) {
 
 @factory('log something')
 class A1 {}
+
+// 总之，@ 后面要么是一个函数名，要么是函数表达式，甚至可以写出下面这样的代码。
+@((constructor: Function) => {
+  console.log('log something');
+})
+class InlineDecoratorExample {
+  // ...
+}
