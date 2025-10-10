@@ -10,3 +10,12 @@
 //     "emitDecoratorMetadata": true
 // }
 // }
+
+// 2. 装饰器的种类
+// 按照所装饰的不同对象，装饰器可以分成五类。
+//
+// - 类装饰器（Class Decorators）：用于类。
+// - 属性装饰器（Property Decorators）：用于属性。
+// - 方法装饰器（Method Decorators）：用于方法。
+// - 存取器装饰器（Accessor Decorators）：用于类的 set 或 get 方法。
+// - 参数装饰器（Parameter Decorators）：用于方法的参数。
