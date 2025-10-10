@@ -65,3 +65,11 @@
 // 类装饰器的类型定义如下。
 // 下面定义中，类型参数 TFunction 必须是函数，实际上就是构造方法。类装饰器的返回值，要么是返回处理后的原始构造方法，要么返回一个新的构造方法。
 type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
+
+function f(target: any) {
+  console.log('apply decorator');
+  return target;
+}
+
+@f
+class A {} // 输出：apply decorator
