@@ -264,6 +264,7 @@ class Student {
 }
 
 const stud = new Student();
+// todo: 这句话教材上说的不对，需要继续深入研究
 stud.year = 2022;
 
 // // 报错 Not allowed value 2022
