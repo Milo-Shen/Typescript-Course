@@ -134,3 +134,20 @@ class Foo {
 
 const foo = new Foo();
 console.log('foo.value : ', foo.value); // 123
+
+// 上面示例中，装饰器 decorator 返回一个新的类，替代了原来的类。
+// 上例的装饰器参数 target 类型是 any，可以改成构造方法，这样就更准确了。
+type Constructor = {
+  new (...args: any[]): {};
+};
+
+function decorator1<T extends Constructor>(target: T) {
+  return class extends target {
+    value = 123;
+  };
+}
+
+@decorator1
+class Foo1 {
+  value = 456;
+}
