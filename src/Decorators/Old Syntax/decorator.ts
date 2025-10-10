@@ -170,3 +170,28 @@ type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descrip
 // 1. target：（对于类的静态方法）类的构造函数，或者（对于类的实例方法）类的原型。
 // 2. propertyKey：所装饰方法的方法名，类型为 string|symbol。
 // 3. descriptor：所装饰方法的描述对象。
+
+// 方法装饰器的返回值（如果有的话），就是修改后的该方法的描述对象，可以覆盖原始方法的描述对象。
+// 下面是一个示例。
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log('target === Greeter.prototype : ', target === Greeter.prototype);
+    console.log('[method decorator] target:', target, '; propertyKey:', propertyKey, '; descriptor:', descriptor);
+    descriptor.enumerable = value;
+  };
+}
+
+class Greeter {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  @enumerable(true)
+  greet() {
+    return 'Hello, ' + this.greeting;
+  }
+}
+
+console.log("Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet') : ", Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet'));
