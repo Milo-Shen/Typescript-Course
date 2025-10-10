@@ -271,3 +271,14 @@ stud.year = 2022;
 console.log('Student.prototype.year : ', Student.prototype.year);
 
 // 注意，属性装饰器的第一个参数，对于实例属性是类的原型对象，而不是实例对象（ 即不是 this 对象 ）。这是因为装饰器执行时，类还没有新建实例，所以实例对象不存在。
+// 由于拿不到 this，所以属性装饰器无法获得实例属性的值。这也是它没有在参数里面提供属性描述对象的原因。
+function logProperty(target: Object, member: string) {
+  const prop = Object.getOwnPropertyDescriptor(target, member);
+  // 输出 Property name undefined
+  console.log(`Property ${member}: `, prop);
+}
+
+class PropertyExample {
+  @logProperty
+  name: string = 'Foo';
+}
