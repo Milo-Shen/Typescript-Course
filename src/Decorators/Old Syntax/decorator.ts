@@ -103,7 +103,7 @@ function sealed(constructor: Function) {
 function factory(info: string) {
   console.log('received: ', info);
   return function (target: any) {
-    console.log('apply decorator');
+    console.log('apply decorator to: ', target);
     return target;
   };
 }
@@ -114,7 +114,7 @@ class A1 {}
 // 总之，@ 后面要么是一个函数名，要么是函数表达式，甚至可以写出下面这样的代码。
 // 下面示例中，@后面是一个箭头函数，这也是合法的。
 @((constructor: Function) => {
-  console.log('log something');
+  console.log('log something: ', constructor);
 })
 class InlineDecoratorExample {
   // ...
