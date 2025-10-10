@@ -238,3 +238,10 @@ new C().add(1, 2);
 // 5. 属性装饰器
 // 属性装饰器用来装饰属性，类型定义如下。
 type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
+
+// 属性装饰器函数接受两个参数
+// 1. target：（对于实例属性）类的原型对象（prototype），或者（对于静态属性）类的构造函数。
+// 2. propertyKey：所装饰属性的属性名，注意类型有可能是字符串，也有可能是 Symbol 值。
+
+// 属性装饰器不需要返回值，如果有的话，也会被忽略。
+// 下面是一个示例。
