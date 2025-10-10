@@ -281,9 +281,11 @@ function logProperty(target: Object, member: string) {
 }
 
 // 下面示例中，属性装饰器 @logProperty 内部想要获取实例属性 name 的属性描述对象，结果拿到的是 undefined。
-// 因为上例的 target 是类的原型对象，不是实例对象，所以拿不到 name 属性，
-// 也就是说 target.name 是不存在的，所以拿到的是 undefined。只有通过 this.name 才能拿到 name 属性，但是这时 this 还不存在。
+// 因为上例的 target 是类的原型对象，不是实例对象，所以拿不到 name 属性，也就是说 target.name 是不存在的，所以拿到的是 undefined。只有通过 this.name 才能拿到 name 属性，但是这时 this 还不存在。
 class PropertyExample {
   @logProperty
   name: string = 'Foo';
 }
+
+// 属性装饰器不仅无法获得实例属性的值，也不能初始化或修改实例属性，而且它的返回值也会被忽略。因此，它的作用很有限。
+// 不过，如果属性装饰器设置了当前属性的存取器（ getter / setter ），然后在构造函数里面就可以对实例属性进行读写。
