@@ -194,4 +194,6 @@ class Greeter {
   }
 }
 
+// 上面示例中，方法装饰器 @enumerable() 装饰 Greeter 类的 greet() 方法，作用是修改该方法的描述对象的可遍历性属性 enumerable。
+// @enumerable(true) 表示将该方法修改成可遍历。
 console.log("Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet') : ", Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet'));
