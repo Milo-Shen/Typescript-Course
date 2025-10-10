@@ -97,3 +97,15 @@ function sealed(constructor: Function) {
   Object.seal(constructor);
   Object.seal(constructor.prototype);
 }
+
+// 如果除了构造方法，类装饰器还需要其他参数，可以采取“工厂模式”，即把装饰器写在一个函数里面，该函数可以接受其他参数，执行后返回装饰器。但是，这样就需要调用装饰器的时候，先执行一次工厂函数。
+function factory(info: string) {
+  console.log('received: ', info);
+  return function (target: any) {
+    console.log('apply decorator');
+    return target;
+  };
+}
+
+@factory('log something')
+class A1 {}
