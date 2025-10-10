@@ -305,7 +305,8 @@ function Min(limit: number) {
         value = newVal;
       }
     };
-    Object.defineProperty(target, propertyKey, {
+
+    Reflect.defineProperty(target, propertyKey, {
       get: getter,
       set: setter,
     });
