@@ -233,7 +233,7 @@ class C {
 
 // params:  1 2
 // result:  3
-// new C().add(1, 2);
+new C().add(1, 2);
 
 // 5. 属性装饰器
 // 属性装饰器用来装饰属性，类型定义如下。
@@ -279,6 +279,8 @@ function logProperty(target: Object, member: string) {
   console.log('target === PropertyExample.prototype : ', target === PropertyExample.prototype);
 }
 
+// 下面示例中，属性装饰器@logProperty内部想要获取实例属性name的属性描述对象，结果拿到的是undefined。
+// 因为上例的target是类的原型对象，不是实例对象，所以拿不到name属性，也就是说target.name是不存在的，所以拿到的是undefined。只有通过this.name才能拿到name属性，但是这时this还不存在。
 class PropertyExample {
   @logProperty
   name: string = 'Foo';
