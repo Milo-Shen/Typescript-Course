@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "reflect": "ts-node ./ReflectMetadata/reflectMetadata.ts"
+    "reflect": "ts-node ES6/ReflectMetadata/reflectMetadata.ts"
   },
   "repository": {
     "type": "git",
