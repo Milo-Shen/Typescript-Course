@@ -119,3 +119,18 @@ class A1 {}
 class InlineDecoratorExample {
   // ...
 }
+
+// 类装饰器可以没有返回值，如果有返回值，就会替代所装饰的类的构造函数。由于 JavaScript 的类等同于构造函数的语法糖，所以装饰器通常返回一个新的类，对原有的类进行修改或扩展。
+function decorator(target: any) {
+  return class extends target {
+    value = 123;
+  };
+}
+
+@decorator
+class Foo {
+  value = 456;
+}
+
+const foo = new Foo();
+console.log('foo.value : ', foo.value); // 123
