@@ -151,3 +151,12 @@ function decorator1<T extends Constructor>(target: T) {
 class Foo1 {
   value = 456;
 }
+
+// 这时，装饰器的行为就是下面这样。
+
+// @decorator
+// class A {}
+//
+// // 等同于
+// class A {}
+// A = decorator(A) || A;
