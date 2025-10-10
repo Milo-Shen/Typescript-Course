@@ -290,3 +290,39 @@ class PropertyExample {
 // 属性装饰器不仅无法获得实例属性的值，也不能初始化或修改实例属性，而且它的返回值也会被忽略。因此，它的作用很有限。
 // 不过，如果属性装饰器设置了当前属性的存取器（ getter / setter ），然后在构造函数里面就可以对实例属性进行读写。
 // 下面示例中，属性装饰器@Min通过设置存取器，拿到了实例属性的值
+function Min(limit: number) {
+  return function (target: Object, propertyKey: string) {
+    let value: string;
+
+    const getter = function () {
+      return value;
+    };
+
+    const setter = function (newVal: string) {
+      if (newVal.length < limit) {
+        throw new Error(`Your password should be bigger than ${limit}`);
+      } else {
+        value = newVal;
+      }
+    };
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter,
+    });
+  };
+}
+
+class User {
+  username: string;
+
+  @Min(8)
+  password: string;
+
+  constructor(username: string, password: string) {
+    this.username = username;
+    this.password = password;
+  }
+}
+
+// 报错 Your password should be bigger than 8
+const u = new User('Foo', 'pass');
