@@ -19,3 +19,5 @@
 // - 方法装饰器（Method Decorators）：用于方法。
 // - 存取器装饰器（Accessor Decorators）：用于类的 set 或 get 方法。
 // - 参数装饰器（Parameter Decorators）：用于方法的参数。
+
+// 下面是这五种装饰器一起使用的一个示例。
