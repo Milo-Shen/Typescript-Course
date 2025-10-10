@@ -66,6 +66,9 @@
 // 下面定义中，类型参数 TFunction 必须是函数，实际上就是构造方法。类装饰器的返回值，要么是返回处理后的原始构造方法，要么返回一个新的构造方法。
 type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
 
+// 下面示例中，使用了装饰器@f，因此类A的构造方法会自动传入f。
+// 类A不需要新建实例，装饰器也会执行。装饰器会在代码加载阶段执行，而不是在运行时执行，而且只会执行一次。
+// 由于 TypeScript 存在编译阶段，所以装饰器对类的行为的改变，实际上发生在编译阶段。这意味着，TypeScript 装饰器能在编译阶段运行代码，也就是说，它本质就是编译时执行的函数。
 function f(target: any) {
   console.log('apply decorator');
   return target;
