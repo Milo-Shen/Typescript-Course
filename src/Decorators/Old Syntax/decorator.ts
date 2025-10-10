@@ -234,3 +234,7 @@ class C {
 // params:  1 2
 // result:  3
 new C().add(1, 2);
+
+// 5. 属性装饰器
+// 属性装饰器用来装饰属性，类型定义如下。
+type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
