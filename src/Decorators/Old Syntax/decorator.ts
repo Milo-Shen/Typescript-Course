@@ -165,3 +165,8 @@ class Foo1 {
 // 4. 方法装饰器
 // 方法装饰器用来装饰类的方法，它的类型定义如下。
 type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
+
+// 方法装饰器一共可以接受三个参数。
+// 1. target：（对于类的静态方法）类的构造函数，或者（对于类的实例方法）类的原型。
+// 2. propertyKey：所装饰方法的方法名，类型为string|symbol。
+// 3. descriptor：所装饰方法的描述对象。
