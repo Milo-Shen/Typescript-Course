@@ -168,5 +168,5 @@ type MethodDecorator = <T>(target: Object, propertyKey: string | symbol, descrip
 
 // 方法装饰器一共可以接受三个参数。
 // 1. target：（对于类的静态方法）类的构造函数，或者（对于类的实例方法）类的原型。
-// 2. propertyKey：所装饰方法的方法名，类型为string|symbol。
+// 2. propertyKey：所装饰方法的方法名，类型为 string|symbol。
 // 3. descriptor：所装饰方法的描述对象。
