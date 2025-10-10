@@ -276,6 +276,7 @@ function logProperty(target: Object, member: string) {
   const prop = Object.getOwnPropertyDescriptor(target, member);
   // 输出 Property name undefined
   console.log(`Property ${member}: `, prop);
+  console.log('target === PropertyExample.prototype : ', target === PropertyExample.prototype);
 }
 
 class PropertyExample {
