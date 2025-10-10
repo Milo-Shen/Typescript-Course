@@ -245,3 +245,25 @@ type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
 
 // 属性装饰器不需要返回值，如果有的话，也会被忽略。
 // 下面是一个示例。
+function ValidRange(min: number, max: number) {
+  return (target: Object, key: string) => {
+    Object.defineProperty(target, key, {
+      set: function (v: number) {
+        if (v < min || v > max) {
+          throw new Error(`Not allowed value ${v}`);
+        }
+      },
+    });
+  };
+}
+
+// 输出 Installing ValidRange on year
+class Student {
+  @ValidRange(1920, 2020)
+  year!: number;
+}
+
+const stud = new Student();
+
+// 报错 Not allowed value 2022
+stud.year = 2022;
