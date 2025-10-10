@@ -21,3 +21,24 @@
 // - 参数装饰器（Parameter Decorators）：用于方法的参数。
 
 // 下面是这五种装饰器一起使用的一个示例。
+// @ClassDecorator() // （A）
+// class A {
+//   @PropertyDecorator() // （B）
+//   name: string;
+//
+//   @MethodDecorator() //（C）
+//   fly(
+//     @ParameterDecorator() // （D）
+//     meters: number,
+//   ) {
+//     // code
+//   }
+//
+//   @AccessorDecorator() // （E）
+//   get egg() {
+//     // code
+//   }
+//   set egg(e) {
+//     // code
+//   }
+// }
