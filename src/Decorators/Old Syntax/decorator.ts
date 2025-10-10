@@ -181,11 +181,24 @@ function enumerable(value: boolean) {
   };
 }
 
+function configurable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log('target === Greeter : ', target === Greeter);
+    console.log('[static method decorator] target:', target, '; propertyKey:', propertyKey, '; descriptor:', descriptor);
+    descriptor.configurable = value;
+  };
+}
+
 class Greeter {
   greeting: string;
 
   constructor(message: string) {
     this.greeting = message;
+  }
+
+  @configurable(true)
+  static Hi() {
+    return 'Hi';
   }
 
   @enumerable(true)
@@ -197,3 +210,5 @@ class Greeter {
 // 上面示例中，方法装饰器 @enumerable() 装饰 Greeter 类的 greet() 方法，作用是修改该方法的描述对象的可遍历性属性 enumerable。
 // @enumerable(true) 表示将该方法修改成可遍历。
 console.log("Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet') : ", Reflect.getOwnPropertyDescriptor(Greeter.prototype, 'greet'));
+
+// 下面再看一个例子。
