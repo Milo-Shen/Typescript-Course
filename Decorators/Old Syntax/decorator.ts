@@ -57,3 +57,11 @@
 // function decorated() {
 //   console.log('in decorated');
 // }
+
+// 3. 类装饰器
+// 类装饰器应用于类（class），但实际上是应用于类的构造方法。
+// 类装饰器有唯一参数，就是构造方法，可以在装饰器内部，对构造方法进行各种改造。如果类装饰器有返回值，就会替换掉原来的构造方法。
+
+// 类装饰器的类型定义如下。
+// 下面定义中，类型参数 TFunction 必须是函数，实际上就是构造方法。类装饰器的返回值，要么是返回处理后的原始构造方法，要么返回一个新的构造方法。
+type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
