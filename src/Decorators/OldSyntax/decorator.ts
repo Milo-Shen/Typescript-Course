@@ -264,6 +264,7 @@ class Student {
 }
 
 const stud = new Student();
-
-// 报错 Not allowed value 2022
 stud.year = 2022;
+
+// // 报错 Not allowed value 2022
+// Student.prototype.year = 2022;
