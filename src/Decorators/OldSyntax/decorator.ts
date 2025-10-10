@@ -233,7 +233,7 @@ class C {
 
 // params:  1 2
 // result:  3
-new C().add(1, 2);
+// new C().add(1, 2);
 
 // 5. 属性装饰器
 // 属性装饰器用来装饰属性，类型定义如下。
@@ -268,3 +268,6 @@ stud.year = 2022;
 
 // // 报错 Not allowed value 2022
 // Student.prototype.year = 2022;
+console.log('Student.prototype.year : ', Student.prototype.year);
+
+// 注意，属性装饰器的第一个参数，对于实例属性是类的原型对象，而不是实例对象（ 即不是 this 对象 ）。这是因为装饰器执行时，类还没有新建实例，所以实例对象不存在。
