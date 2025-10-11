@@ -266,7 +266,8 @@ class Student {
 const stud = new Student();
 // todo: 这句话教材上说的不对，需要继续深入研究
 // 结论: 只有 compilerOptions 下的 target 设置为 ES5 或是 ES6 的时候，属性装饰器才会生效
-stud.year = 2022;
+// stud.year = 2022;
+stud.year = 1921;
 
 // // 报错 Not allowed value 2022
 // Student.prototype.year = 2022;
