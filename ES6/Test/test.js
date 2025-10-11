@@ -3,10 +3,11 @@ class Test {
   app = 4;
   set app(val) {
     console.log('set: ', val);
-    this.a = val + 500;
+    this.app = val;
   }
   get app() {
-    return -100;
+    console.log('get: ', this.app);
+    return this.app;
   }
 }
 
