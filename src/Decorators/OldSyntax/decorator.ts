@@ -373,7 +373,6 @@ class Point {
 
 // 下面的示例是将装饰器用来验证属性值，如果赋值不满足条件就报错。
 function validator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
-  const originalGet = descriptor.get;
   const originalSet = descriptor.set;
   if (originalSet) {
     descriptor.set = function (val) {
