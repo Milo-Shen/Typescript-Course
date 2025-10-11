@@ -510,3 +510,16 @@ class C5 {
   @f3('C')
   m1() {}
 }
+
+// 如果同一个方法有多个参数，那么参数也是顺序加载、逆序执行。
+function f4(key: string): any {
+  console.log('加载：', key);
+  return function () {
+    console.log('执行：', key);
+  };
+}
+
+console.log('--- C6 ---');
+class C6 {
+  method(@f4('A') a: any, @f4('B') b: any, @f4('C') c: any) {}
+}
