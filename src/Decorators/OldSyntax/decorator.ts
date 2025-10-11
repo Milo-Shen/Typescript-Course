@@ -336,3 +336,36 @@ const u = new User('Foo', '123456789');
 // 存取器装饰器用来装饰类的存取器（accessor）。所谓“存取器”指的是某个属性的取值器（getter）和存值器（setter）。
 // 存取器装饰器的类型定义，与方法装饰器一致。
 type AccessorDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
+
+// 存取器装饰器有三个参数。
+// target：（ 对于静态属性的存取器 ）类的构造函数，或者（ 对于实例属性的存取器 ）类的原型对象。
+// propertyKey：存取器的属性名。
+// descriptor：存取器的属性描述对象。
+
+// 存取器装饰器的返回值（如果有的话），会作为该属性新的描述对象。
+// 下面是一个示例。
+function configurable1(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    console.log('target === Point.prototype : ', target === Point.prototype);
+    descriptor.configurable = value;
+  };
+}
+
+class Point {
+  private _x: number;
+  private _y: number;
+  constructor(x: number, y: number) {
+    this._x = x;
+    this._y = y;
+  }
+
+  @configurable1(false)
+  get x() {
+    return this._x;
+  }
+
+  @configurable1(false)
+  get y() {
+    return this._y;
+  }
+}
