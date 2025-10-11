@@ -1,6 +1,6 @@
 class Test {
   a = -1;
-  // app = 4;
+  app = 4;
   set app(val) {
     console.log('set: ', val);
     this.a = val + 500;
