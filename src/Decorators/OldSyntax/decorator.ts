@@ -398,5 +398,4 @@ class C1 {
 }
 
 const c1 = new C1();
-c1.foo = 150;
-// 报错
+// c1.foo = 150; // 报错
