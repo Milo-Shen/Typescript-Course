@@ -415,3 +415,21 @@ type ParameterDecorator = (target: Object, propertyKey: string | symbol, paramet
 
 // 该装饰器不需要返回值，如果有的话会被忽略。
 // 下面是一个示例。
+function log(target: Object, propertyKey: string | symbol, parameterIndex: number) {
+  console.log(`${String(propertyKey)} NO.${parameterIndex} Parameter`);
+}
+
+class C2 {
+  member(@log x: number, @log y: number) {
+    console.log(`member Parameters: ${x} ${y}`);
+  }
+}
+
+// 上面示例中，参数装饰器会输出参数的位置序号。注意，后面的参数会先输出。
+// 跟其他装饰器不同，参数装饰器主要用于输出信息，没有办法修改类的行为。
+const c2 = new C2();
+c2.member(5, 5);
+// 输出结果:
+// member NO.1 Parameter
+// member NO.0 Parameter
+// member Parameters: 5 5
