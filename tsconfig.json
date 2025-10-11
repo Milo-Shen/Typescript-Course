@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node22/tsconfig.json",
   "compilerOptions": {
+    "target": "ES6",
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "module": "NodeNext",
