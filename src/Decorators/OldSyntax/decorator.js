@@ -9,6 +9,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _C1_foo;
 Object.defineProperty(exports, "__esModule", { value: true });
 // 下面示例中，使用了装饰器@f，因此类A的构造方法会自动传入 f。
 // 类A不需要新建实例，装饰器也会执行。装饰器会在代码加载阶段执行，而不是在运行时执行，而且只会执行一次。
@@ -185,7 +197,9 @@ __decorate([
 ], Student.prototype, "year", void 0);
 const stud = new Student();
 // todo: 这句话教材上说的不对，需要继续深入研究
-stud.year = 2022;
+// 结论: 只有 compilerOptions 下的 target 设置为 ES5 或是 ES6 的时候，属性装饰器才会生效
+// stud.year = 2022;
+stud.year = 1921;
 // // 报错 Not allowed value 2022
 // Student.prototype.year = 2022;
 console.log('Student.prototype.year : ', Student.prototype.year);
@@ -241,5 +255,68 @@ __decorate([
 ], User.prototype, "password", void 0);
 // 报错 Your password should be bigger than 8
 // todo: 实际这块的代码，也没有生效，需要找到原因
-const u = new User('Foo', 'pass');
-// 6. 存取器装饰器
+// 结论: 只有 compilerOptions 下的 target 设置为 ES5 或是 ES6 的时候，属性装饰器才会生效
+const u = new User('Foo', '123456789');
+// 存取器装饰器有三个参数。
+// target：（ 对于静态属性的存取器 ）类的构造函数，或者（ 对于实例属性的存取器 ）类的原型对象。
+// propertyKey：存取器的属性名。
+// descriptor：存取器的属性描述对象。
+// 存取器装饰器的返回值（如果有的话），会作为该属性新的描述对象。
+// 下面是一个示例。
+function configurable1(value) {
+    return function (target, propertyKey, descriptor) {
+        console.log('target === Point.prototype : ', target === Point.prototype);
+        descriptor.configurable = value;
+    };
+}
+// 下面示例中，装饰器 @configurable(false) 关闭了所装饰属性（ x 和 y ）的属性描述对象的 configurable 键（ 即关闭了属性的可配置性 ）。
+class Point {
+    constructor(x, y) {
+        this._x = x;
+        this._y = y;
+    }
+    get x() {
+        return this._x;
+    }
+    get y() {
+        return this._y;
+    }
+}
+__decorate([
+    configurable1(false)
+], Point.prototype, "x", null);
+__decorate([
+    configurable1(false)
+], Point.prototype, "y", null);
+// 下面的示例是将装饰器用来验证属性值，如果赋值不满足条件就报错。
+function validator(target, propertyKey, descriptor) {
+    const originalSet = descriptor.set;
+    if (originalSet) {
+        descriptor.set = function (val) {
+            if (val > 100) {
+                throw new Error(`Invalid value for ${propertyKey}`);
+            }
+            originalSet.call(this, val);
+        };
+    }
+}
+class C1 {
+    constructor() {
+        _C1_foo.set(this, void 0);
+    }
+    set foo(v) {
+        __classPrivateFieldSet(this, _C1_foo, v, "f");
+    }
+    // @validator // TS1207: Decorators cannot be applied to multiple get/set accessors of the same name.
+    get foo() {
+        return __classPrivateFieldGet(this, _C1_foo, "f");
+    }
+}
+_C1_foo = new WeakMap();
+__decorate([
+    validator
+], C1.prototype, "foo", null);
+const c1 = new C1();
+// c1.foo = 150; // 报错
+// 上面示例中，装饰器用自己定义的存值器，取代了原来的存值器，加入了验证条件。
+// Important TypeScript 不允许对同一个属性的存取器（ getter 和 setter ）使用同一个装饰器，也就是说只能装饰两个存取器里面的一个，且必须是排在前面的那一个，否则报错。

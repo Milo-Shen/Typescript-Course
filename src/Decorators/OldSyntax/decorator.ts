@@ -392,6 +392,7 @@ class C1 {
     this.#foo = v;
   }
 
+  // @validator // TS1207: Decorators cannot be applied to multiple get/set accessors of the same name.
   get foo() {
     return this.#foo;
   }
@@ -399,3 +400,5 @@ class C1 {
 
 const c1 = new C1();
 // c1.foo = 150; // 报错
+// 上面示例中，装饰器用自己定义的存值器，取代了原来的存值器，加入了验证条件。
+// Important TypeScript 不允许对同一个属性的存取器（ getter 和 setter ）使用同一个装饰器，也就是说只能装饰两个存取器里面的一个，且必须是排在前面的那一个，否则报错。
