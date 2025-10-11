@@ -405,3 +405,10 @@ const c1 = new C1();
 // 装饰器之所以不能同时用于同一个属性的存值器和取值器，原因是装饰器可以从属性描述对象上面，同时拿到取值器和存值器，因此只调用一次就够了。
 
 // 7. 参数装饰器
+// 参数装饰器用来装饰构造方法或者其他方法的参数。它的类型定义如下。
+type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void;
+
+// 参数装饰器接受三个参数。
+// target：（ 对于静态方法 ）类的构造函数，或者（ 对于类的实例方法 ）类的原型对象。
+// propertyKey：所装饰的方法的名字，类型为 string|symbol。
+// parameterIndex：当前参数在方法的参数序列的位置（ 从 0 开始 ）。
