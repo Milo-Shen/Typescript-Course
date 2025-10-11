@@ -333,3 +333,6 @@ class User {
 const u = new User('Foo', '123456789');
 
 // 6. 存取器装饰器
+// 存取器装饰器用来装饰类的存取器（accessor）。所谓“存取器”指的是某个属性的取值器（getter）和存值器（setter）。
+// 存取器装饰器的类型定义，与方法装饰器一致。
+type AccessorDecorator = <T>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
