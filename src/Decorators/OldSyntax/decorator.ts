@@ -433,3 +433,5 @@ c2.member(5, 5);
 // member NO.1 Parameter
 // member NO.0 Parameter
 // member Parameters: 5 5
+
+// 8. 装饰器的执行顺序
