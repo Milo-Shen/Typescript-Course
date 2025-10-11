@@ -351,6 +351,7 @@ function configurable1(value: boolean) {
   };
 }
 
+// 下面示例中，装饰器 @configurable(false) 关闭了所装饰属性（ x 和 y ）的属性描述对象的 configurable 键（ 即关闭了属性的可配置性 ）。
 class Point {
   private _x: number;
   private _y: number;
@@ -369,4 +370,3 @@ class Point {
     return this._y;
   }
 }
-// 上面示例中，装饰器 @configurable(false) 关闭了所装饰属性（ x 和 y ）的属性描述对象的 configurable 键（ 即关闭了属性的可配置性 ）。
