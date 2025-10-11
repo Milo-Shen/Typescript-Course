@@ -369,3 +369,4 @@ class Point {
     return this._y;
   }
 }
+// 上面示例中，装饰器 @configurable(false) 关闭了所装饰属性（ x 和 y ）的属性描述对象的 configurable 键（ 即关闭了属性的可配置性 ）。
