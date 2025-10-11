@@ -443,3 +443,19 @@ c2.member(5, 5);
 // 4. 类装饰器。
 
 // 请看下面的示例。
+function f1(key: string): any {
+  return function () {
+    console.log('执行：', key);
+  };
+}
+
+@f1('类装饰器')
+class C3 {
+  @f1('静态方法')
+  static method() {}
+
+  @f1('实例方法')
+  method() {}
+
+  constructor(@f1('构造方法参数') foo: any) {}
+}
