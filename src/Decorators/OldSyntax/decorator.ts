@@ -412,3 +412,6 @@ type ParameterDecorator = (target: Object, propertyKey: string | symbol, paramet
 // target：（ 对于静态方法 ）类的构造函数，或者（ 对于类的实例方法 ）类的原型对象。
 // propertyKey：所装饰的方法的名字，类型为 string|symbol。
 // parameterIndex：当前参数在方法的参数序列的位置（ 从 0 开始 ）。
+
+// 该装饰器不需要返回值，如果有的话会被忽略。
+// 下面是一个示例。
