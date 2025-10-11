@@ -328,3 +328,5 @@ class User {
 // 报错 Your password should be bigger than 8
 // todo: 实际这块的代码，也没有生效，需要找到原因
 const u = new User('Foo', 'pass');
+
+// 6. 存取器装饰器
