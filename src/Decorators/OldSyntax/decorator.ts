@@ -330,6 +330,6 @@ class User {
 // 报错 Your password should be bigger than 8
 // todo: 实际这块的代码，也没有生效，需要找到原因
 // 结论: 只有 compilerOptions 下的 target 设置为 ES5 或是 ES6 的时候，属性装饰器才会生效
-const u = new User('Foo', 'pass');
+const u = new User('Foo', '123456789');
 
 // 6. 存取器装饰器
