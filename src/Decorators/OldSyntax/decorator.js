@@ -9,6 +9,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
@@ -316,7 +319,145 @@ _C1_foo = new WeakMap();
 __decorate([
     validator
 ], C1.prototype, "foo", null);
-const c1 = new C1();
-// c1.foo = 150; // 报错
-// 上面示例中，装饰器用自己定义的存值器，取代了原来的存值器，加入了验证条件。
+// 下面示例中，装饰器用自己定义的存值器，取代了原来的存值器，加入了验证条件。
 // Important TypeScript 不允许对同一个属性的存取器（ getter 和 setter ）使用同一个装饰器，也就是说只能装饰两个存取器里面的一个，且必须是排在前面的那一个，否则报错。
+const c1 = new C1();
+// 参数装饰器接受三个参数。
+// target：（ 对于静态方法 ）类的构造函数，或者（ 对于类的实例方法 ）类的原型对象。
+// propertyKey：所装饰的方法的名字，类型为 string|symbol。
+// parameterIndex：当前参数在方法的参数序列的位置（ 从 0 开始 ）。
+// 该装饰器不需要返回值，如果有的话会被忽略。
+// 下面是一个示例。
+function log(target, propertyKey, parameterIndex) {
+    console.log(`${String(propertyKey)} NO.${parameterIndex} Parameter`);
+}
+class C2 {
+    member(x, y) {
+        console.log(`member Parameters: ${x} ${y}`);
+    }
+}
+__decorate([
+    __param(0, log),
+    __param(1, log)
+], C2.prototype, "member", null);
+// 上面示例中，参数装饰器会输出参数的位置序号。注意，后面的参数会先输出。
+// 跟其他装饰器不同，参数装饰器主要用于输出信息，没有办法修改类的行为。
+const c2 = new C2();
+c2.member(5, 5);
+// 输出结果:
+// member NO.1 Parameter
+// member NO.0 Parameter
+// member Parameters: 5 5
+// 8. 装饰器的执行顺序
+// 前面说过，装饰器只会执行一次，就是在代码解析时执行，哪怕根本没有调用类新建实例，也会执行，而且从此就不再执行了。
+// 执行装饰器时，按照如下顺序执行。
+// 1. 实例相关的装饰器。
+// 2. 静态相关的装饰器。
+// 3. 构造方法的参数装饰器。
+// 4. 类装饰器。
+// 请看下面的示例。
+function f1(key) {
+    return function () {
+        console.log('执行：', key);
+    };
+}
+let C3 = class C3 {
+    static method() { }
+    method() { }
+    constructor(foo) { }
+};
+__decorate([
+    f1('实例方法')
+], C3.prototype, "method", null);
+__decorate([
+    f1('静态方法')
+], C3, "method", null);
+C3 = __decorate([
+    f1('类装饰器'),
+    __param(0, f1('构造方法参数'))
+], C3);
+// 同一级装饰器的执行顺序，是按照它们的代码顺序。但是，参数装饰器的执行总是早于方法装饰器。
+function f2(key) {
+    return function () {
+        console.log('执行：', key);
+    };
+}
+// 执行结果:
+// 执行： 参数1
+// 执行： 方法1
+// 执行： 属性1
+// 执行： 参数2
+// 执行： 方法2
+// 执行： 属性2
+// 下面示例中，实例装饰器的执行顺序，完全是按照代码顺序的。但是，同一个方法的参数装饰器，总是早于该方法的方法装饰器执行。
+class C4 {
+    m1(foo) { }
+    m2(foo) { }
+}
+__decorate([
+    f2('方法1'),
+    __param(0, f2('参数1'))
+], C4.prototype, "m1", null);
+__decorate([
+    f2('属性1')
+], C4.prototype, "p1", void 0);
+__decorate([
+    f2('方法2'),
+    __param(0, f2('参数2'))
+], C4.prototype, "m2", null);
+__decorate([
+    f2('属性2')
+], C4.prototype, "p2", void 0);
+// 如果同一个方法或属性有多个装饰器，那么装饰器将顺序加载、逆序执行。
+function f3(key) {
+    console.log('加载：', key);
+    return function () {
+        console.log('执行：', key);
+    };
+}
+// 执行结果:
+// 加载： A
+// 加载： B
+// 加载： C
+// 执行： C
+// 执行： B
+// 执行： A
+class C5 {
+    m1() { }
+}
+__decorate([
+    f3('A'),
+    f3('B'),
+    f3('C')
+], C5.prototype, "m1", null);
+// 如果同一个方法有多个参数，那么参数也是顺序加载、逆序执行。
+function f4(key) {
+    console.log('加载：', key);
+    return function () {
+        console.log('执行：', key);
+    };
+}
+console.log('--- C6 ---');
+class C6 {
+    method(a, b, c) { }
+}
+__decorate([
+    __param(0, f4('A')),
+    __param(1, f4('B')),
+    __param(2, f4('C'))
+], C6.prototype, "method", null);
+// 9. 为什么装饰器不能用于函数？
+// 总之，由于存在函数提升，使得装饰器不能用于函数。类是不会提升的，所以就没有这方面的问题。
+// 另一方面，如果一定要装饰函数，可以采用高阶函数的形式直接执行，没必要写成装饰器。
+function doSomething(name) {
+    console.log('Hello, ' + name);
+}
+function loggingDecorator(wrapped) {
+    return function () {
+        console.log('Starting');
+        const result = wrapped.apply(this, arguments);
+        console.log('Finished');
+        return result;
+    };
+}
+const wrapped = loggingDecorator(doSomething);

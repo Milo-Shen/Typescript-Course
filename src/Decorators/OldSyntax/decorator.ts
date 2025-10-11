@@ -523,3 +523,22 @@ console.log('--- C6 ---');
 class C6 {
   method(@f4('A') a: any, @f4('B') b: any, @f4('C') c: any) {}
 }
+
+// 9. 为什么装饰器不能用于函数？
+// 总之，由于存在函数提升，使得装饰器不能用于函数。类是不会提升的，所以就没有这方面的问题。
+
+// 另一方面，如果一定要装饰函数，可以采用高阶函数的形式直接执行，没必要写成装饰器。
+// function doSomething(name: any) {
+//   console.log('Hello, ' + name);
+// }
+//
+// function loggingDecorator(wrapped: Function) {
+//   return function () {
+//     console.log('Starting');
+//     const result = wrapped.apply(this, arguments);
+//     console.log('Finished');
+//     return result;
+//   };
+// }
+//
+// const wrapped = loggingDecorator(doSomething);
