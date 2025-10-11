@@ -449,15 +449,27 @@ __decorate([
 // 9. 为什么装饰器不能用于函数？
 // 总之，由于存在函数提升，使得装饰器不能用于函数。类是不会提升的，所以就没有这方面的问题。
 // 另一方面，如果一定要装饰函数，可以采用高阶函数的形式直接执行，没必要写成装饰器。
-function doSomething(name) {
-    console.log('Hello, ' + name);
-}
-function loggingDecorator(wrapped) {
-    return function () {
-        console.log('Starting');
-        const result = wrapped.apply(this, arguments);
-        console.log('Finished');
-        return result;
-    };
-}
-const wrapped = loggingDecorator(doSomething);
+// function doSomething(name: any) {
+//   console.log('Hello, ' + name);
+// }
+//
+// function loggingDecorator(wrapped: Function) {
+//   return function () {
+//     console.log('Starting');
+//     const result = wrapped.apply(this, arguments);
+//     console.log('Finished');
+//     return result;
+//   };
+// }
+//
+// const wrapped = loggingDecorator(doSomething);
+// 10. 多个装饰器的合成
+// 多个装饰器可以应用于同一个目标对象，可以写在一行。
+// @f @g x
+// 上面示例中，装饰器@f和@g同时装饰目标对象x。
+// 多个装饰器也可以写成多行。
+// @f
+// @g
+// x
+// 多个装饰器的效果，类似于函数的合成，按照从里到外的顺序执行。对于上例来说，就是执行f(g(x))。
+// 前面也说过，如果f和g是表达式，那么需要先从外到里求值。 ( 装饰器将顺序加载、逆序执行 )
