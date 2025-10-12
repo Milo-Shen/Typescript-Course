@@ -228,11 +228,13 @@ let C = (() => {
 })();
 // `@trace` 等同于
 // C.prototype.toString = trace(C.prototype.toString);
-// 上面示例中，@trace是方法toString()的装饰器，它的效果等同于最后一行对toString()的改写。
+// 上面示例中，@trace 是方法 toString() 的装饰器，它的效果等同于最后一行对 toString() 的改写。
 // 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
-function replaceMethod() {
+// 下面示例中，装饰器 @replaceMethod 返回的函数，就成为了新的 hello() 方法。
+function replaceMethod(value, context) {
     return function () {
-        return `How are you, ${this.name}?`;
+        return `How are you, ${this.name} ?`;
+        // return `How are you, ${context.access.get('name')}?`;
     };
 }
 let Person1 = (() => {
@@ -257,4 +259,4 @@ let Person1 = (() => {
         _a;
 })();
 const robin1 = new Person1('Robin');
-robin1.hello();
+console.log('robin1.hello() : ', robin1.hello());
