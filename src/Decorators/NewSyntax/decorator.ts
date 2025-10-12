@@ -323,4 +323,4 @@ class Person4 {
 }
 
 const g4 = new Person4('李四').greet;
-g4(); // "Hello, my name is 张三."
+g4(); // "Hello, my name is 李四."
