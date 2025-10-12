@@ -189,9 +189,10 @@ class C {
 
 // `@trace` 等同于
 // C.prototype.toString = trace(C.prototype.toString);
-// 上面示例中，@trace是方法toString()的装饰器，它的效果等同于最后一行对toString()的改写。
+// 上面示例中，@trace 是方法 toString() 的装饰器，它的效果等同于最后一行对 toString() 的改写。
 
 // 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
+// 下面示例中，装饰器 @replaceMethod 返回的函数，就成为了新的 hello() 方法。
 function replaceMethod(value: Function, context: ClassMethodDecoratorContext) {
   return function () {
     return `How are you, ${this.name} ?`;
