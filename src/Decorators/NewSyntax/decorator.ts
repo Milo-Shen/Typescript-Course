@@ -383,3 +383,4 @@ class Color {
 // "initializing name with value green--final-value"
 const color = new Color();
 console.log('color.name : ', color.name);
+// 上面示例中，属性装饰器 @logged 装饰属性 name。@logged 的返回值是一个函数，该函数用来对属性 name 进行初始化，它的参数 initialValue 就是属性 name 的初始值 green。新建实例对象 color 时，该函数会自动执行。
