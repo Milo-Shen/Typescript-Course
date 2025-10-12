@@ -54,3 +54,6 @@ function decorator(value: any, context: ClassMethodDecoratorContext) {
 // （4）private：布尔值，表示所装饰的对象是否为类的私有成员。
 // （5）static：布尔值，表示所装饰的对象是否为类的静态成员。
 // （6）access：一个对象，包含了某个值的 get 和 set 方法。
+
+// 4. 类装饰器
+// 类装饰器的类型描述如下。
