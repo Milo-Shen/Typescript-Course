@@ -254,3 +254,26 @@ class Person2 {
 // "LOG: Exiting method 'greet'."
 const person2 = new Person2('张三');
 person2.greet();
+
+// 利用方法装饰器，可以将类的方法变成延迟执行。
+function delay(milliseconds: number = 0) {
+  return function (value: any, context: any) {
+    if (context.kind === 'method') {
+      return function (...args: any[]) {
+        setTimeout(() => {
+          value.apply(this, args);
+        }, milliseconds);
+      };
+    }
+  };
+}
+
+class Logger {
+  @delay(1000)
+  log(msg: string) {
+    console.log(`${msg}`);
+  }
+}
+
+let logger = new Logger();
+logger.log('Hello World');
