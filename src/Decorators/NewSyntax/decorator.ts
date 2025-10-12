@@ -277,7 +277,7 @@ class Logger {
 
 // 上面示例中，方法装饰器 @delay(1000) 将方法 log() 的执行推迟了 1 秒（1000毫秒）。这里真正的方法装饰器，是 delay() 执行后返回的函数，delay() 的作用是接收参数，用来设置推迟执行的时间。这种通过高阶函数返回装饰器的做法，称为“工厂模式”，即可以像工厂那样生产出一个模子的装饰器。
 const logger = new Logger();
-logger.log('Hello World');
+// logger.log('Hello World');
 
 // 方法装饰器的参数 context 对象里面，有一个 addInitializer() 方法。它是一个钩子方法，用来在类的初始化阶段，添加回调函数。这个回调函数就是作为 addInitializer() 的参数传入的，它会在构造方法执行期间执行，早于属性（field）的初始化。
 // 下面是 addInitializer() 方法的一个例子。我们知道，类的方法往往需要在构造方法里面，进行 this 的绑定。
@@ -327,3 +327,24 @@ class Person4 {
 
 const g4 = new Person4('李四').greet;
 g4(); // "Hello, my name is 李四."
+
+// 下面再看一个例子，通过 addInitializer() 将选定的方法名，放入一个集合。
+function collect(value: any, { name, addInitializer }: any) {
+  addInitializer(function () {
+    if (!this.collectedMethodKeys) {
+      this.collectedMethodKeys = new Set();
+    }
+    this.collectedMethodKeys.add(name);
+  });
+}
+
+class C2 {
+  @collect
+  toString() {}
+
+  @collect
+  [Symbol.iterator]() {}
+}
+
+const inst = new C2();
+console.log((inst as any).collectedMethodKeys); // new Set(['toString', Symbol.iterator])
