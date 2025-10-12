@@ -33,7 +33,17 @@ class A {} // "hi, this is class A"
 // 上面代码中，Decorator是装饰器的类型定义。它是一个函数，使用时会接收到value和context两个参数。
 // 1. value：所装饰的对象。
 // 2. context：上下文对象，TypeScript 提供一个原生接口ClassMethodDecoratorContext，描述这个对象。
-
 function decorator(value: any, context: ClassMethodDecoratorContext) {
   // ...
 }
+
+// 上面是一个装饰器函数，其中第二个参数 context 的类型就可以写成 ClassMethodDecoratorContext。
+// context 对象的属性，根据所装饰对象的不同而不同，其中只有两个属性（ kind 和 name ）是必有的，其他都是可选的。
+
+// （1）kind：字符串，表示所装饰对象的类型，可能取以下的值。
+// 'class'
+// 'method'
+// 'getter'
+// 'setter'
+// 'field'
+// 'accessor'
