@@ -297,3 +297,5 @@ class Person3 {
 
 const g3 = new Person3('张三').greet;
 g3(); // "Hello, my name is 张三."
+
+// 上面例子中，类 Person 的构造方法内部，将 this 与 greet() 方法进行了绑定。如果没有这一行，将 greet() 赋值给变量 g 进行调用，就会报错了。
