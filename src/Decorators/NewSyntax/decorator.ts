@@ -423,3 +423,6 @@ type ClassSetterDecorator = (
     addInitializer(initializer: () => void): void;
   },
 ) => Function | void;
+
+// 注意，getter 装饰器的上下文对象 context 的 access 属性，只包含 get() 方法；setter 装饰器的 access 属性，只包含 set() 方法。
+// 这两个装饰器要么不返回值，要么返回一个函数，取代原来的取值器或存值器。
