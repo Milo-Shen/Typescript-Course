@@ -305,7 +305,7 @@ function bound(originalMethod: any, context: ClassMethodDecoratorContext) {
   if (context.private) {
     throw new Error(`不能绑定私有方法 ${methodName as string}`);
   }
-  context.addInitializer(function () {
+  context.addInitializer(function (this: any) {
     this[methodName] = this[methodName].bind(this);
   });
 }
