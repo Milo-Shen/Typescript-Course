@@ -500,3 +500,4 @@ type ClassAutoAccessorDecorator = (
   set?: (value: unknown) => void;
   init?: (initialValue: unknown) => unknown;
 } | void;
+// accessor 装饰器的 value 参数，是一个包含 get() 方法和 set() 方法的对象。该装饰器可以不返回值，或者返回一个新的对象，用来取代原来的 get() 方法和 set() 方法。此外，装饰器返回的对象还可以包括一个 init() 方法，用来改变私有属性的初始值。
