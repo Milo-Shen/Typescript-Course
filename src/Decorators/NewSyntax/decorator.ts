@@ -133,6 +133,7 @@ const robin = Person('Robin');
 console.log('robin.name : ', robin.name); // 'Robin'
 
 // 类装饰器的上下文对象 context 的 addInitializer() 方法，用来定义一个类的初始化函数，在类完全定义结束后执行。
+// 下面示例中，类 MyComponent 定义完成后，会自动执行类装饰器 @customElement() 给出的初始化函数，该函数会将当前类注册为指定名称（本例为<hello-world>）的自定义 HTML 元素。
 function customElement(name: string) {
   return <Input extends new (...args: any) => any>(value: Input, context: ClassDecoratorContext) => {
     context.addInitializer(function () {
