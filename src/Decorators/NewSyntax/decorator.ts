@@ -280,3 +280,20 @@ const logger = new Logger();
 logger.log('Hello World');
 
 // 方法装饰器的参数 context 对象里面，有一个 addInitializer() 方法。它是一个钩子方法，用来在类的初始化阶段，添加回调函数。这个回调函数就是作为 addInitializer() 的参数传入的，它会在构造方法执行期间执行，早于属性（field）的初始化。
+// 下面是 addInitializer() 方法的一个例子。我们知道，类的方法往往需要在构造方法里面，进行 this 的绑定。
+class Person3 {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+
+    // greet() 绑定 this
+    this.greet = this.greet.bind(this);
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+const g3 = new Person3('张三').greet;
+g3(); // "Hello, my name is 张三."
