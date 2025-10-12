@@ -57,7 +57,7 @@ function decorator(value: any, context: ClassMethodDecoratorContext) {
 
 // 4. 类装饰器
 // 类装饰器的类型描述如下。
-// 类装饰器接受两个参数：value（当前类本身）和context（上下文对象）。其中，context 对象的kind属性固定为字符串 class。
+// 类装饰器接受两个参数：value（当前类本身）和 context（上下文对象）。其中，context 对象的kind属性固定为字符串 class。
 type ClassDecorator = (
   value: Function,
   context: {
