@@ -397,3 +397,29 @@ class C3 {
 
 const inst2 = new C3();
 console.log('inst2.field : ', inst2.field); // 6
+
+// 7. getter 装饰器，setter 装饰器
+// getter 装饰器和 setter 装饰器，是分别针对类的取值器（getter）和存值器（setter）的装饰器。它们的类型描述如下。
+type ClassGetterDecorator = (
+  value: Function,
+  context: {
+    kind: 'getter';
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { get: () => unknown };
+    addInitializer(initializer: () => void): void;
+  },
+) => Function | void;
+
+type ClassSetterDecorator = (
+  value: Function,
+  context: {
+    kind: 'setter';
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { set: (value: unknown) => void };
+    addInitializer(initializer: () => void): void;
+  },
+) => Function | void;
