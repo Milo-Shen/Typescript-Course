@@ -4,6 +4,7 @@
     "target": "ES6",
     "lib": ["dom"],
     "preserveConstEnums": true,
+    "noImplicitThis": false,
 //    "emitDecoratorMetadata": true,
 //    "experimentalDecorators": true,
     "module": "NodeNext",
