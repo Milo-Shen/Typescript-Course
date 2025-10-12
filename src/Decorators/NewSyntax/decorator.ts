@@ -82,3 +82,25 @@ class User {}
 
 let u = new User();
 (u as any).greet(); // "你好"
+
+// 类装饰器可以返回一个函数，替代当前类的构造方法。
+function countInstances(value: any, context: any) {
+  let instanceCount = 0;
+
+  const wrapper = function (...args: any[]) {
+    instanceCount++;
+    const instance = new value(...args);
+    instance.count = instanceCount;
+    return instance;
+  } as unknown as typeof MyClass;
+
+  wrapper.prototype = value.prototype; // A
+  return wrapper;
+}
+
+@countInstances
+class MyClass {}
+
+const inst1 = new MyClass();
+console.log('inst1 instanceof MyClass', inst1 instanceof MyClass); // true
+console.log('inst1.count', (inst1 as any).count); // 1
