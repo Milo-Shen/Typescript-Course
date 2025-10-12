@@ -68,6 +68,7 @@ type ClassDecorator = (
 ) => Function | void;
 
 // 类装饰器一般用来对类进行操作，可以不返回任何值，请看下面的例子。
+// 下面示例中，类装饰器 @Greeter 在类 User 的原型对象上，添加了一个 greet() 方法，实例就可以直接使用该方法。
 function Greeter(value: any, context: any) {
   if (context.kind === 'class') {
     value.prototype.greet = function () {
