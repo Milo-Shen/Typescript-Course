@@ -194,7 +194,8 @@ class C {
 // 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
 function replaceMethod(value: Function, context: ClassMethodDecoratorContext) {
   return function () {
-    return `How are you, ${this.name}?`;
+    return `How are you, ${this.name} ?`;
+    // return `How are you, ${context.access.get('name')}?`;
   };
 }
 
@@ -211,4 +212,4 @@ class Person1 {
 }
 
 const robin1 = new Person1('Robin');
-robin1.hello();
+console.log('robin1.hello() : ', robin1.hello());
