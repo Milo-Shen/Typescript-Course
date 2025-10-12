@@ -307,6 +307,7 @@ function bound(originalMethod: any, context: ClassMethodDecoratorContext) {
   }
   // 上面示例中，绑定 this 转移到了 addInitializer() 方法里面。
   context.addInitializer(function (this: any) {
+    console.log('this instanceof Person4', this instanceof Person4);
     this[methodName] = this[methodName].bind(this);
   });
 }
