@@ -473,7 +473,7 @@ class C6 {
     this.#x = val;
   }
 }
-console.log("new C6().x: ",new C6().x)
+console.log('new C6().x: ', new C6().x);
 
 // accessor 也可以与静态属性和私有属性一起使用。
 class C7 {
