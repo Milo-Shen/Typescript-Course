@@ -300,6 +300,7 @@ g3(); // "Hello, my name is 张三."
 
 // 上面例子中，类 Person 的构造方法内部，将 this 与 greet() 方法进行了绑定。如果没有这一行，将 greet() 赋值给变量 g 进行调用，就会报错了。
 // this 的绑定必须放在构造方法里面，因为这必须在类的初始化阶段完成。现在，它可以移到方法装饰器的 addInitializer() 里面。
+// addInitializer 在每次实例化的时候，都会被调用到
 function bound(originalMethod: any, context: ClassMethodDecoratorContext) {
   const methodName = context.name;
   if (context.private) {
