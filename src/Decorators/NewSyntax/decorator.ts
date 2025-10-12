@@ -363,3 +363,6 @@ type ClassFieldDecorator = (
     addInitializer(initializer: () => void): void;
   },
 ) => (initialValue: unknown) => unknown | void;
+
+// 1. 注意，装饰器的第一个参数 value 的类型是 undefined，这意味着这个参数实际上没用的，装饰器不能从 value 获取所装饰属性的值。另外，第二个参数 context 对象的 kind 属性的值为字符串 field，而不是 “property” 或 “attribute” ，这一点是需要注意的。
+// 2. 属性装饰器要么不返回值，要么返回一个函数，该函数会自动执行，用来对所装饰属性进行初始化。该函数的参数是所装饰属性的初始值，该函数的返回值是该属性的最终值。
