@@ -227,7 +227,14 @@ function log(originalMethod: any, context: ClassMethodDecoratorContext) {
     return result;
   }
 
-  return replacementMethod;
+  function _replacementMethod(...args: any[]) {
+    console.log(`LOG: Entering method '${methodName}'.`);
+    const result = originalMethod.call(this, ...args);
+    console.log(`LOG: Exiting method '${methodName}'.`);
+    return result;
+  }
+
+  return _replacementMethod;
 }
 
 class Person2 {
