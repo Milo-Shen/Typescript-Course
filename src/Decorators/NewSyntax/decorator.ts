@@ -426,3 +426,31 @@ type ClassSetterDecorator = (
 
 // 注意，getter 装饰器的上下文对象 context 的 access 属性，只包含 get() 方法；setter 装饰器的 access 属性，只包含 set() 方法。
 // 这两个装饰器要么不返回值，要么返回一个函数，取代原来的取值器或存值器。
+class C4 {
+  @lazy
+  get value() {
+    console.log('正在计算……');
+    return '开销大的计算结果';
+  }
+}
+
+function lazy(value: any, { kind, name }: any) {
+  if (kind === 'getter') {
+    return function (this: any) {
+      const result = value.call(this);
+      Object.defineProperty(this, name, {
+        value: result,
+        writable: false,
+      });
+      return result;
+    };
+  }
+  return;
+}
+
+const inst4 = new C4();
+// 正在计算……
+// '开销大的计算结果'
+console.log(inst4.value);
+// '开销大的计算结果'
+console.log(inst4.value);
