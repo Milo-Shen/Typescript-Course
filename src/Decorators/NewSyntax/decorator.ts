@@ -142,15 +142,15 @@ function customElement(name: string) {
   };
 }
 
-@customElement('hello-world')
-class MyComponent extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    this.innerHTML = `<h1>Hello World</h1>`;
-  }
-}
+// @customElement('hello-world')
+// class MyComponent extends HTMLElement {
+//   constructor() {
+//     super();
+//   }
+//   connectedCallback() {
+//     this.innerHTML = `<h1>Hello World</h1>`;
+//   }
+// }
 
 // 5. 方法装饰器
 // 方法装饰器用来装饰类的方法（method）。它的类型描述如下。
@@ -192,3 +192,23 @@ class C {
 // 上面示例中，@trace是方法toString()的装饰器，它的效果等同于最后一行对toString()的改写。
 
 // 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
+function replaceMethod(value: Function, context: ClassMethodDecoratorContext) {
+  return function () {
+    return `How are you, ${this.name}?`;
+  };
+}
+
+class Person1 {
+  name: string;
+  constructor(name: any) {
+    this.name = name;
+  }
+
+  @replaceMethod
+  hello() {
+    return `Hi ${this.name}!`;
+  }
+}
+
+const robin1 = new Person1('Robin');
+robin1.hello();
