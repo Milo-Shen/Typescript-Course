@@ -275,5 +275,6 @@ class Logger {
   }
 }
 
-let logger = new Logger();
+// 上面示例中，方法装饰器 @delay(1000) 将方法 log() 的执行推迟了 1 秒（1000毫秒）。这里真正的方法装饰器，是 delay() 执行后返回的函数，delay() 的作用是接收参数，用来设置推迟执行的时间。这种通过高阶函数返回装饰器的做法，称为“工厂模式”，即可以像工厂那样生产出一个模子的装饰器。
+const logger = new Logger();
 logger.log('Hello World');
