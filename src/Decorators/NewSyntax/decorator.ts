@@ -106,3 +106,28 @@ class MyClass {}
 const inst1 = new MyClass();
 console.log('inst1 instanceof MyClass', inst1 instanceof MyClass); // true
 console.log('inst1.count', (inst1 as any).count); // 1
+
+// 下面的例子是通过类装饰器，禁止使用 new 命令新建类的实例。
+function functionCallable(value: any, { kind }: any): any {
+  if (kind === 'class') {
+    return function (...args: any) {
+      if (new.target !== undefined) {
+        throw new TypeError('This function can’t be new-invoked');
+      }
+      return new value(...args);
+    };
+  }
+}
+
+@functionCallable
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+// 上面示例中，类装饰器 @functionCallable 返回一个新的构造方法，里面判断 new.target 是否不为空，如果是的，就表示通过 new 命令调用，从而报错。
+// @ts-ignore
+const robin = Person('Robin');
+console.log('robin.name : ', robin.name); // 'Robin'
