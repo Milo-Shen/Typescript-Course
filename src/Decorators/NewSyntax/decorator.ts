@@ -47,3 +47,10 @@ function decorator(value: any, context: ClassMethodDecoratorContext) {
 // 'setter'
 // 'field'
 // 'accessor'
+
+// 这表示一共有六种类型的装饰器。
+// （2）name：字符串或者 Symbol 值，所装饰对象的名字，比如类名、属性名等。
+// （3）addInitializer()：函数，用来添加类的初始化逻辑。以前，这些逻辑通常放在构造函数里面，对方法进行初始化，现在改成以函数形式传入 addInitializer() 方法。注意，addInitializer() 没有返回值。
+// （4）private：布尔值，表示所装饰的对象是否为类的私有成员。
+// （5）static：布尔值，表示所装饰的对象是否为类的静态成员。
+// （6）access：一个对象，包含了某个值的 get 和 set 方法。
