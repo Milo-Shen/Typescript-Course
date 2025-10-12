@@ -351,3 +351,15 @@ const inst = new C2();
 console.log((inst as any).collectedMethodKeys); // new Set(['toString', Symbol.iterator])
 
 // 6. 属性装饰器
+// 属性装饰器用来装饰定义在类顶部的属性（field）。它的类型描述如下。
+type ClassFieldDecorator = (
+  value: undefined,
+  context: {
+    kind: 'field';
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { get: () => unknown; set: (value: unknown) => void };
+    addInitializer(initializer: () => void): void;
+  },
+) => (initialValue: unknown) => unknown | void;
