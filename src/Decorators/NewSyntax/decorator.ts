@@ -269,7 +269,7 @@ function delay(milliseconds: number = 0) {
 }
 
 class Logger {
-  @delay(1000)
+  @delay(1)
   log(msg: string) {
     console.log(`${msg}`);
   }
@@ -299,3 +299,28 @@ const g3 = new Person3('张三').greet;
 g3(); // "Hello, my name is 张三."
 
 // 上面例子中，类 Person 的构造方法内部，将 this 与 greet() 方法进行了绑定。如果没有这一行，将 greet() 赋值给变量 g 进行调用，就会报错了。
+// this 的绑定必须放在构造方法里面，因为这必须在类的初始化阶段完成。现在，它可以移到方法装饰器的 addInitializer() 里面。
+function bound(originalMethod: any, context: ClassMethodDecoratorContext) {
+  const methodName = context.name;
+  if (context.private) {
+    throw new Error(`不能绑定私有方法 ${methodName as string}`);
+  }
+  context.addInitializer(function () {
+    this[methodName] = this[methodName].bind(this);
+  });
+}
+
+class Person4 {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  @bound
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+const g4 = new Person4('李四').greet;
+g4(); // "Hello, my name is 张三."
