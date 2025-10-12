@@ -216,3 +216,34 @@ const robin1 = new Person1('Robin');
 console.log('robin1.hello() : ', robin1.hello());
 
 // 下面是另一个例子。
+// 下面示例中，装饰器 @log 的返回值是一个函数 replacementMethod，替代了原始方法 greet()。在 replacementMethod() 内部，通过执行 originalMethod.call() 完成了对原始方法的调用。
+function log(originalMethod: any, context: ClassMethodDecoratorContext) {
+  const methodName = String(context.name);
+
+  function replacementMethod(...args: any[]) {
+    console.log(`LOG: Entering method '${methodName}'.`);
+    const result = originalMethod.call(this, ...args);
+    console.log(`LOG: Exiting method '${methodName}'.`);
+    return result;
+  }
+
+  return replacementMethod;
+}
+
+class Person2 {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  @log
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+// "LOG: Entering method 'greet'."
+// "Hello, my name is 张三."
+// "LOG: Exiting method 'greet'."
+const person2 = new Person2('张三');
+person2.greet();
