@@ -214,3 +214,5 @@ class Person1 {
 
 const robin1 = new Person1('Robin');
 console.log('robin1.hello() : ', robin1.hello());
+
+// 下面是另一个例子。
