@@ -12,3 +12,20 @@ function simpleDecorator(value: any, context: any) {
 
 @simpleDecorator
 class A {} // "hi, this is class A"
+
+// 3. 装饰器的结构
+// 装饰器函数的类型定义如下。
+// type Decorator = (
+//   value: DecoratedValue,
+//   context: {
+//     kind: string;
+//     name: string | symbol;
+//     addInitializer?(initializer: () => void): void;
+//     static?: boolean;
+//     private?: boolean;
+//     access: {
+//       get?(): unknown;
+//       set?(value: unknown): void;
+//     };
+//   },
+// ) => void | ReplacementValue;
