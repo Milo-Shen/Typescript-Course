@@ -101,6 +101,8 @@ function countInstances(value: any, context: any) {
 @countInstances
 class MyClass {}
 
+// 上面示例中，类装饰器 @countInstances 返回一个函数，替换了类 MyClass 的构造方法。新的构造方法实现了实例的计数，每新建一个实例，计数器就会加一，并且对实例添加 count 属性，表示当前实例的编号。
+// 注意，上例为了确保新构造方法继承定义在 MyClass 的原型之上的成员，特别加入 A 行，确保两者的原型对象是一致的。否则，新的构造函数 wrapper 的原型对象，与 MyClass 不同，通不过 instanceof 运算符。
 const inst1 = new MyClass();
 console.log('inst1 instanceof MyClass', inst1 instanceof MyClass); // true
 console.log('inst1.count', (inst1 as any).count); // 1
