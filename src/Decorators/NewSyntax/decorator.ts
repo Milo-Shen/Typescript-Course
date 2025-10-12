@@ -384,3 +384,16 @@ class Color {
 const color = new Color();
 console.log('color.name : ', color.name);
 // 上面示例中，属性装饰器 @logged 装饰属性 name。@logged 的返回值是一个函数，该函数用来对属性 name 进行初始化，它的参数 initialValue 就是属性 name 的初始值 green。新建实例对象 color 时，该函数会自动执行。
+
+// 属性装饰器的返回值函数，可以用来更改属性的初始值。
+function twice(value: undefined) {
+  return (initialValue: any) => initialValue * 2;
+}
+
+class C3 {
+  @twice
+  field = 3;
+}
+
+const inst2 = new C3();
+console.log('inst2.field : ', inst2.field); // 6
