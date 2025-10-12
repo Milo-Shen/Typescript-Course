@@ -579,3 +579,18 @@ class T {
 // 应用 @d(): 实例属性
 // 应用 @d(): 类装饰器
 // 静态属性值
+
+// 如果一个方法或属性有多个装饰器，则内层的装饰器先执行，外层的装饰器后执行。
+// 下面示例中，greet()有两个装饰器，内层的@log先执行，外层的@bound针对得到的结果再执行。
+class Person5 {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  @bound
+  @log
+  greet() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
