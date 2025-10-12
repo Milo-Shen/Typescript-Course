@@ -66,3 +66,18 @@ type ClassDecorator = (
     addInitializer(initializer: () => void): void;
   },
 ) => Function | void;
+
+// 类装饰器一般用来对类进行操作，可以不返回任何值，请看下面的例子。
+function Greeter(value: any, context: any) {
+  if (context.kind === 'class') {
+    value.prototype.greet = function () {
+      console.log('你好');
+    };
+  }
+}
+
+@Greeter
+class User {}
+
+let u = new User();
+(u as any).greet(); // "你好"
