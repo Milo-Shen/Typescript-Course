@@ -453,4 +453,5 @@ const inst4 = new C4();
 // '开销大的计算结果'
 console.log(inst4.value);
 // '开销大的计算结果'
+// 上面示例中，第一次读取 inst.value，会进行计算，然后装饰器 @lazy 将结果存入只读属性 value，后面再读取这个属性，就不会进行计算了。
 console.log(inst4.value);
