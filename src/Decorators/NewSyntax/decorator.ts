@@ -151,3 +151,26 @@ class MyComponent extends HTMLElement {
     this.innerHTML = `<h1>Hello World</h1>`;
   }
 }
+
+// 5. 方法装饰器
+// 方法装饰器用来装饰类的方法（method）。它的类型描述如下。
+type ClassMethodDecorator = (
+  value: Function,
+  context: {
+    kind: 'method';
+    name: string | symbol;
+    static: boolean;
+    private: boolean;
+    access: { get: () => unknown };
+    addInitializer(initializer: () => void): void;
+  },
+) => Function | void;
+
+// 根据上面的类型，方法装饰器是一个函数，接受两个参数：value 和 context。
+// 参数value是方法本身，参数 context 是上下文对象，有以下属性。
+// 1. kind：值固定为字符串 method，表示当前为方法装饰器。
+// 2. name：所装饰的方法名，类型为字符串或 Symbol 值。
+// 3. static：布尔值，表示是否为静态方法。该属性为只读属性。
+// 4. private：布尔值，表示是否为私有方法。该属性为只读属性。
+// 5. access：对象，包含了方法的存取器，但是只有 get() 方法用来取值，没有 set() 方法进行赋值。
+// 6. addInitializer()：为方法增加初始化函数。
