@@ -174,3 +174,21 @@ type ClassMethodDecorator = (
 // 4. private：布尔值，表示是否为私有方法。该属性为只读属性。
 // 5. access：对象，包含了方法的存取器，但是只有 get() 方法用来取值，没有 set() 方法进行赋值。
 // 6. addInitializer()：为方法增加初始化函数。
+
+// 方法装饰器会改写类的原始方法，实质等同于下面的操作。
+function trace(decoratedMethod: any) {
+  // ...
+}
+
+class C {
+  @trace
+  toString() {
+    return 'C';
+  }
+}
+
+// `@trace` 等同于
+// C.prototype.toString = trace(C.prototype.toString);
+// 上面示例中，@trace是方法toString()的装饰器，它的效果等同于最后一行对toString()的改写。
+
+// 如果方法装饰器返回一个新的函数，就会替代所装饰的原始函数。
