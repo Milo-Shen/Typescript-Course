@@ -455,3 +455,21 @@ console.log(inst4.value);
 // '开销大的计算结果'
 // 上面示例中，第一次读取 inst.value，会进行计算，然后装饰器 @lazy 将结果存入只读属性 value，后面再读取这个属性，就不会进行计算了。
 console.log(inst4.value);
+
+// 8. accessor 装饰器
+// 装饰器语法引入了一个新的属性修饰符 accessor。
+class C5 {
+  accessor x = 1;
+}
+// 上面示例中，accessor 修饰符等同于为公开属性 x 自动生成取值器和存值器，它们作用于私有属性 x。（注意，公开的 x 与私有的 x 不是同一个属性。）也就是说，上面的代码等同于下面的代码。
+class C6 {
+  #x = 1;
+
+  get x() {
+    return this.#x;
+  }
+
+  set x(val) {
+    this.#x = val;
+  }
+}
