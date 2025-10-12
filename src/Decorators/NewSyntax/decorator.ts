@@ -482,6 +482,7 @@ class C7 {
 }
 
 // accessor 装饰器的类型如下。
+// accessor 装饰器的 value 参数，是一个包含 get() 方法和 set() 方法的对象。该装饰器可以不返回值，或者返回一个新的对象，用来取代原来的 get() 方法和 set() 方法。此外，装饰器返回的对象还可以包括一个 init() 方法，用来改变私有属性的初始值。
 type ClassAutoAccessorDecorator = (
   value: {
     get: () => unknown;
@@ -500,4 +501,33 @@ type ClassAutoAccessorDecorator = (
   set?: (value: unknown) => void;
   init?: (initialValue: unknown) => unknown;
 } | void;
-// accessor 装饰器的 value 参数，是一个包含 get() 方法和 set() 方法的对象。该装饰器可以不返回值，或者返回一个新的对象，用来取代原来的 get() 方法和 set() 方法。此外，装饰器返回的对象还可以包括一个 init() 方法，用来改变私有属性的初始值。
+
+// 下面是一个例子。
+function logged1(value: any, { kind, name }: any) {
+  if (kind === 'accessor') {
+    let { get, set } = value;
+    return {
+      get() {
+        console.log(`getting ${name}`);
+        return get.call(this);
+      },
+
+      set(val: any) {
+        console.log(`setting ${name} to ${val}`);
+        return set.call(this, val);
+      },
+
+      init(initialValue: any) {
+        console.log(`initializing ${name} with value ${initialValue}`);
+        return initialValue + 9;
+      },
+    };
+  }
+}
+
+class C8 {
+  @logged1 accessor x = 1;
+}
+
+let c = new C8();
+console.log('c.x : ', c.x);
