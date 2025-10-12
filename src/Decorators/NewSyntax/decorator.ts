@@ -349,3 +349,5 @@ class C2 {
 // 下面示例中，方法装饰器@collect会将所装饰的成员名字，加入一个 Set 集合collectedMethodKeys。
 const inst = new C2();
 console.log((inst as any).collectedMethodKeys); // new Set(['toString', Symbol.iterator])
+
+// 6. 属性装饰器
